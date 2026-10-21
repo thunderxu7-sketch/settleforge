@@ -111,3 +111,46 @@ CREATE TABLE IF NOT EXISTS audit (
  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, actor TEXT NOT NULL, action TEXT NOT NULL,
  subject TEXT NOT NULL, detail JSONB NOT NULL DEFAULT '{}', created_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
+
+-- RFQ is an explicitly simulated, same-network ledger exchange. No chain
+-- transaction or external liquidity-provider fill is implied by these records.
+CREATE TABLE IF NOT EXISTS rfq_makers (
+ id TEXT PRIMARY KEY, public_key BYTEA NOT NULL CHECK(octet_length(public_key)=32),
+ enabled BOOLEAN NOT NULL DEFAULT true, mode TEXT NOT NULL CHECK(mode='local-simulated')
+);
+CREATE TABLE IF NOT EXISTS rfq_quotes (
+ id UUID PRIMARY KEY, request_id UUID NOT NULL, user_id UUID NOT NULL REFERENCES users(id),
+ maker_id TEXT NOT NULL REFERENCES rfq_makers(id), expires_at BIGINT NOT NULL,
+ quote_json JSONB NOT NULL, fingerprint TEXT NOT NULL, created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE TABLE IF NOT EXISTS rfq_trades (
+ id UUID PRIMARY KEY, user_id UUID NOT NULL REFERENCES users(id),
+ quote_id UUID NOT NULL UNIQUE REFERENCES rfq_quotes(id), maker_id TEXT NOT NULL REFERENCES rfq_makers(id),
+ idempotency_key TEXT NOT NULL, fingerprint TEXT NOT NULL, intent_json JSONB NOT NULL,
+ expires_at BIGINT NOT NULL,
+ state TEXT NOT NULL CHECK(state IN ('pending_approval','approved','settled','expired','cancelled')),
+ created_at TIMESTAMPTZ NOT NULL DEFAULT now(), UNIQUE(user_id,idempotency_key)
+);
+CREATE TABLE IF NOT EXISTS rfq_approvals (
+ trade_id UUID NOT NULL REFERENCES rfq_trades(id), actor TEXT NOT NULL, signature TEXT NOT NULL,
+ PRIMARY KEY(trade_id,actor)
+);
+CREATE INDEX IF NOT EXISTS rfq_pending ON rfq_trades(expires_at) WHERE state IN ('pending_approval','approved');
+DO $$ BEGIN
+ IF NOT EXISTS(SELECT 1 FROM pg_trigger WHERE tgname='rfq_quotes_append_only' AND tgrelid='rfq_quotes'::regclass) THEN
+ CREATE TRIGGER rfq_quotes_append_only BEFORE UPDATE OR DELETE ON rfq_quotes FOR EACH ROW EXECUTE FUNCTION reject_ledger_mutation();
+ END IF;
+END $$;
+CREATE OR REPLACE FUNCTION protect_rfq_trade_intent() RETURNS TRIGGER LANGUAGE plpgsql AS $$
+BEGIN
+ IF (to_jsonb(NEW)-'state') IS DISTINCT FROM (to_jsonb(OLD)-'state') THEN
+  RAISE EXCEPTION 'RFQ trade intent is immutable' USING ERRCODE='42501';
+ END IF;
+ RETURN NEW;
+END $$;
+DO $$ BEGIN
+ IF NOT EXISTS(SELECT 1 FROM pg_trigger WHERE tgname='rfq_trade_intent_immutable' AND tgrelid='rfq_trades'::regclass) THEN
+ CREATE TRIGGER rfq_trade_intent_immutable BEFORE UPDATE ON rfq_trades FOR EACH ROW EXECUTE FUNCTION protect_rfq_trade_intent();
+ CREATE TRIGGER rfq_approvals_append_only BEFORE UPDATE OR DELETE ON rfq_approvals FOR EACH ROW EXECUTE FUNCTION reject_ledger_mutation();
+ END IF;
+END $$;

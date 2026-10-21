@@ -12,6 +12,7 @@
 | HSM | SoftHSM PKCS#11 软件令牌 | 软件 HSM 集成与不可导出密钥测试 |
 | TEE | 本地构造 COSE / 测试证书并验证安全策略 | Nitro 证明校验组件，不声称硬件隔离 |
 | TRON / EVM 托管 | 显式模拟 Adapter | 多网络抽象与业务恢复演示 |
+| RFQ 询价 | 两家本地签名报价、双边预留、双人审批、原子结算与过期退款 | 合成价格与模拟资产，无外部 LP 或主网成交 |
 
 先安装 Go、C 编译器、Python 3、Docker Compose、SoftHSM 和 ripgrep。macOS 可使用已安装的 Colima / Docker；安装 SoftHSM 的命令为 `brew install softhsm`。Ubuntu 对应 `sudo apt-get install softhsm2 ripgrep`。启动 Docker 引擎后进入仓库。
 
@@ -31,12 +32,13 @@ make local-up
 make local-demo
 ```
 
-顺序运行两条流程：
+顺序运行三条流程：
 
 1. **模拟 TRON 的资金状态演示**：充值两次但只入账一次；相同幂等键返回同一笔提现；两个操作员签名；注入广播结果未知；确认后仍使用原交易；归集后用户可用负债不变，静止对账差额为零。
 2. **真实 BTC regtest 的 HTTP 演示**：矿工钱包提供测试币，扫描确认充值；提现经过 API、审批、PSBT 签名、Core mempool 与两次确认；再完成归集，验证用户负债不变及两个 BTC 地址的对账差额为零。
+3. **本地 RFQ 询价演示**：两家做市商签名报价、比较净到账、幂等确认、预留双方资金、两个操作员审批、worker 原子结算及取消退款。单独运行 `make local-rfq-demo`。详见 [RFQ 询价模块](rfq.md)。
 
-演示输出仅包含测试交易 ID、确认信息、业务余额和校验结论。记录位于 `.local/http-acceptance.json` 与 `.local/bitcoin-http-acceptance.json`。BTC 演示会生成新用户和新地址，可重复运行；测试币不具有主网价值。演示期间保持单人操作，静止对账不包含其他并发资金操作。
+演示输出仅包含测试交易 ID、确认信息、业务余额和校验结论。记录位于 `.local/http-acceptance.json`、`.local/bitcoin-http-acceptance.json` 与 `.local/rfq-http-acceptance.json`。BTC 演示会生成新用户和新地址，可重复运行；测试币不具有主网价值。演示期间保持单人操作，静止对账不包含其他并发资金操作。
 
 API 的签名 Provider 默认是本地开发密钥。MPC / PKCS#11 对 BTC 的真实集成通过下面的完整验收分别验证，不会在 API 状态中把默认本地密钥标成 MPC 或硬件 HSM。
 

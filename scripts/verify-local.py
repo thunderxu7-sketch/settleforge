@@ -108,7 +108,7 @@ def main():
         env.update({"SOFTHSM2_CONF": token["config"], "TEST_PKCS11_MODULE": token["module"], "TEST_PKCS11_PIN": "98765432"})
         run("go-vet", [go, "vet", "./..."])
         core_test = "TestBitcoinCoreRegtestDepositWithdrawSweepReorg"
-        run("core-and-security", [go, "test", "-json", "-race", "-count=1", "./..."], required_tests=(core_test, "TestConcurrentWithdrawalsCannotOverspend", "TestUnknownBroadcastRestartAndExactlyOnceSettlement", "TestPKCS11SoftHSMRealSignatureAndNonExtractable", "TestNitroCOSETrustFreshnessPCRBindingReplay", "TestIndependentSignerApprovalBindingsTamperingAndDurableReplay"))
+        run("core-and-security", [go, "test", "-json", "-race", "-count=1", "./..."], required_tests=(core_test, "TestConcurrentWithdrawalsCannotOverspend", "TestUnknownBroadcastRestartAndExactlyOnceSettlement", "TestPKCS11SoftHSMRealSignatureAndNonExtractable", "TestNitroCOSETrustFreshnessPCRBindingReplay", "TestIndependentSignerApprovalBindingsTamperingAndDurableReplay", "TestRFQSignedQuotesFeesAndSourceTimeout", "TestRFQSettlementApprovalsAndReplay", "TestRFQConcurrentAcceptCannotOverspend", "TestRFQExpiryCancellationAndRecovery", "TestRFQPreflightLimitsAndReview", "TestRFQSettlementRollsBackBothAssets", "TestRFQHTTPQuoteConfirmApproveSettle"))
         mpc_dir = str(folder / "mpc")
         run("mpc-dkg-and-sign", [go, "run", "./cmd/mpclab", "--generate", "--dir", mpc_dir], timeout=1080)
         run("mpc-bitcoin", [go, "test", "-json", "-race", "-count=1", "./internal/service", "-run", "^" + core_test + "$"], extra={"TEST_SIGNER_MODE": "mpc", "TEST_MPC_DIR": mpc_dir}, required_tests=(core_test,))

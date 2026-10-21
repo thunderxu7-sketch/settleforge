@@ -1,6 +1,6 @@
 # SettleForge
 
-**Go 钱包核心、交易管理与资金安全工程项目。** PostgreSQL 复式账本、充值索引、提现与归集状态机、Bitcoin Core、独立签名策略及 MPC / PKCS#11 / Nitro 证明验证。
+**Go 钱包核心、交易管理与资金安全工程项目。** PostgreSQL 复式账本、充值索引、提现与归集状态机、RFQ 询价与资金预留、Bitcoin Core、独立签名策略及 MPC / PKCS#11 / Nitro 证明验证。
 
 [![CI](https://github.com/thunderxu7-sketch/settleforge/actions/workflows/ci.yml/badge.svg)](https://github.com/thunderxu7-sketch/settleforge/actions/workflows/ci.yml)
 
@@ -9,6 +9,7 @@
 | 模块 | 当前实现 | 验证环境 |
 |---|---|---|
 | 充值、提现、归集、复式账本 | 整数金额、确认后入账、用户冻结、费用分录、幂等、补偿与对账 | 真实 PostgreSQL，并发及故障测试 |
+| RFQ 询价 | 两家签名报价、净价比较、双边库存预留、双人审批、原子结算及过期退款 | **本地合成报价、模拟资产与账本结算**，未接外部 LP 或主网兑换 |
 | BTC | P2WPKH、PSBT、UTXO 持久预留、找零、费用上限、签名校验、广播、确认、扫块、重组冲正与重新入账 | Bitcoin Core 30.2 regtest |
 | 审批与签名服务 | 两个独立 Ed25519 操作员签名，绑定完整业务指令；独立进程重验审批、钱包与密钥映射、交易内容；签名结果持久化 | HTTP 集成与进程重建测试 |
 | MPC | 新鲜 DKG，2/3 GG18 门限 ECDSA，单份分片拒绝；接入 BTC 交易签名 | tss-lib，**同机进程内协议实验** |
@@ -32,6 +33,8 @@ make local-up
 ```sh
 make local-demo
 ```
+
+询价演示单独运行 `make local-rfq-demo`，专项测试运行 `make test-rfq`。`make local-up` 默认启用 `RFQ_LAB=1`，旧 API 需重启；直接启动二进制默认关闭。流程、数据模型和安全边界见 [RFQ 询价模块](docs/rfq.md)。
 
 API 仅监听 `127.0.0.1:8080`，开发配置位于 `.local/dev.env`。不要把这些本地数据库、RPC 示例凭据用于公网。
 
@@ -77,6 +80,11 @@ TEST_SIGNER_MODE=pkcs11 make test-bitcoin
 | `GET /v1/withdrawals/{id}` | 查询状态及原交易 ID |
 | `GET /v1/reconciliation` | 静止状态下逐地址核对链余额与资产账 |
 | `GET /v1/status` | 明确每个网络使用模拟还是 RPC |
+| `POST /v1/rfq/quotes` | 并行询价、验签与净到账比较 |
+| `POST /v1/rfq/trades` | 幂等接受报价并预留双方资金 |
+| `GET /v1/rfq/trades/{id}` | 查询完整指令与结算状态 |
+| `POST /v1/rfq/trades/{id}/approvals` | 两个操作员对 RFQ 指令签名审批 |
+| `POST /v1/rfq/trades/{id}/cancel` | 取消未完成交易并释放预留 |
 
 创建提现传 `Idempotency-Key`；相同 key 的参数变化返回冲突。
 
@@ -112,6 +120,7 @@ internal/domain/    业务指令与整数金额
 internal/store/     PostgreSQL 模型、账本、状态机、预留、扫描游标
 internal/chain/     Adapter、显式模拟器、Bitcoin Core / PSBT
 internal/service/   充值、提现、归集、恢复、对账与真实节点验收
+internal/rfq/       多来源签名询价、净价比较、审批与本地结算实验
 internal/signing/   开发密钥、审批证明、PKCS#11、签名规范化
 internal/signer/    独立审批与交易重验、持久签名去重
 internal/mpclab/    DKG 与门限 ECDSA 协议驱动

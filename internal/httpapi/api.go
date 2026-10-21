@@ -13,6 +13,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/thunderxu7-sketch/settleforge/internal/chain"
 	"github.com/thunderxu7-sketch/settleforge/internal/domain"
+	"github.com/thunderxu7-sketch/settleforge/internal/rfq"
 	"github.com/thunderxu7-sketch/settleforge/internal/service"
 	"github.com/thunderxu7-sketch/settleforge/internal/signing"
 )
@@ -20,10 +21,12 @@ import (
 type API struct {
 	Service *service.Service
 	Token   string
+	RFQ     *rfq.Service
 }
 
 func (a *API) Handler() http.Handler {
 	mux := http.NewServeMux()
+	a.rfqRoutes(mux)
 	mux.HandleFunc("GET /healthz", func(w http.ResponseWriter, r *http.Request) { respond(w, 200, map[string]string{"status": "ok"}) })
 	mux.HandleFunc("GET /readyz", func(w http.ResponseWriter, r *http.Request) {
 		ctx, cancel := context.WithTimeout(r.Context(), time.Second)
@@ -50,7 +53,11 @@ func (a *API) Handler() http.Handler {
 		if a.Service.Backend != nil {
 			backend = "independent-service"
 		}
-		respond(w, 200, map[string]any{"name": "SettleForge", "environment": "development", "networks": modes, "approval_quorum": 2, "key_provider": provider, "signing_backend": backend})
+		rfqMode := "disabled"
+		if a.RFQ != nil {
+			rfqMode = rfq.Mode
+		}
+		respond(w, 200, map[string]any{"name": "SettleForge", "environment": "development", "networks": modes, "approval_quorum": 2, "key_provider": provider, "signing_backend": backend, "rfq_mode": rfqMode})
 	})
 	mux.HandleFunc("POST /v1/users", func(w http.ResponseWriter, r *http.Request) {
 		var in struct {

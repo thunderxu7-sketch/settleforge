@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"math/big"
+	"strings"
 	"time"
 
 	"github.com/google/uuid"
@@ -116,6 +117,9 @@ func (s *Store) Wallet(ctx context.Context, id string) (domain.Wallet, error) {
 	return w, translate(err)
 }
 func accountKind(code string) string {
+	if strings.HasPrefix(code, "rfq-lab-inventory:") {
+		return "asset"
+	}
 	if len(code) > 5 && code[:5] == "user:" {
 		return "liability"
 	}

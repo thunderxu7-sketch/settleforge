@@ -9,7 +9,7 @@ import (
 
 func TestAuthenticationAndStrictInput(t *testing.T) {
 	api := (&API{Service: &service.Service{}, Token: "test-token-at-least-24-characters"}).Handler()
-	for _, path := range []string{"/v1/users", "/v1/ledger", "/v1/withdrawals", "/v1/dev/deposits"} {
+	for _, path := range []string{"/v1/users", "/v1/ledger", "/v1/withdrawals", "/v1/dev/deposits", "/v1/rfq/quotes", "/v1/rfq/trades", "/v1/rfq/trades/invalid/approvals", "/v1/rfq/trades/invalid/cancel"} {
 		r := httptest.NewRequest("POST", path, strings.NewReader("{}"))
 		w := httptest.NewRecorder()
 		api.ServeHTTP(w, r)

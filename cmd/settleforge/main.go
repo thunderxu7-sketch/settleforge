@@ -22,6 +22,7 @@ import (
 	"github.com/thunderxu7-sketch/settleforge/internal/chain"
 	"github.com/thunderxu7-sketch/settleforge/internal/domain"
 	"github.com/thunderxu7-sketch/settleforge/internal/httpapi"
+	"github.com/thunderxu7-sketch/settleforge/internal/rfq"
 	"github.com/thunderxu7-sketch/settleforge/internal/service"
 	"github.com/thunderxu7-sketch/settleforge/internal/signer"
 	"github.com/thunderxu7-sketch/settleforge/internal/signing"
@@ -180,7 +181,16 @@ func run() error {
 	if !strings.HasPrefix(addr, "127.0.0.1:") {
 		return fmt.Errorf("development server must bind to loopback")
 	}
-	server := &http.Server{Addr: addr, Handler: (&httpapi.API{Service: svc, Token: token}).Handler(), ReadHeaderTimeout: 5 * time.Second, ReadTimeout: 15 * time.Second, WriteTimeout: 15 * time.Second, IdleTimeout: 30 * time.Second}
+	api := &httpapi.API{Service: svc, Token: token}
+	if os.Getenv("RFQ_LAB") == "1" {
+		sources, e := rfq.OpenLab(ctx, st, ".local/rfq-makers")
+		if e != nil {
+			return e
+		}
+		api.RFQ = &rfq.Service{Store: st, Sources: sources, Approvers: actors}
+		go api.RFQ.RunWorker(ctx)
+	}
+	server := &http.Server{Addr: addr, Handler: api.Handler(), ReadHeaderTimeout: 5 * time.Second, ReadTimeout: 15 * time.Second, WriteTimeout: 15 * time.Second, IdleTimeout: 30 * time.Second}
 	go svc.RunWorker(ctx, nil)
 	go func() {
 		<-ctx.Done()
@@ -197,9 +207,10 @@ func run() error {
 }
 func approve(args []string) error {
 	flags := flag.NewFlagSet("approve", flag.ContinueOnError)
-	id := flags.String("id", "", "withdrawal ID")
+	id := flags.String("id", "", "withdrawal or RFQ trade ID")
 	actor := flags.String("actor", "", "operator-a or operator-b")
 	base := flags.String("url", "http://127.0.0.1:8080", "API URL")
+	kind := flags.String("kind", "withdrawal", "withdrawal or rfq")
 	if err := flags.Parse(args); err != nil {
 		return err
 	}
@@ -209,8 +220,14 @@ func approve(args []string) error {
 	if *id == "" {
 		return domain.ErrInvalid
 	}
+	resource := "/v1/withdrawals/"
+	if *kind == "rfq" {
+		resource = "/v1/rfq/trades/"
+	} else if *kind != "withdrawal" {
+		return domain.ErrInvalid
+	}
 	client := &http.Client{Timeout: 10 * time.Second}
-	request, err := http.NewRequest(http.MethodGet, *base+"/v1/withdrawals/"+*id, nil)
+	request, err := http.NewRequest(http.MethodGet, *base+resource+*id, nil)
 	if err != nil {
 		return err
 	}
@@ -223,8 +240,8 @@ func approve(args []string) error {
 	if response.StatusCode != 200 {
 		return fmt.Errorf("intent fetch failed: HTTP %d", response.StatusCode)
 	}
-	var w domain.Withdrawal
-	if err = json.NewDecoder(response.Body).Decode(&w); err != nil {
+	raw, err := io.ReadAll(io.LimitReader(response.Body, 1<<20))
+	if err != nil {
 		return err
 	}
 	key, err := os.ReadFile(filepath.Join(".local/approvers", *actor+".key"))
@@ -234,9 +251,22 @@ func approve(args []string) error {
 	if len(key) != ed25519.PrivateKeySize {
 		return domain.ErrInvalid
 	}
-	proof := signing.SignApproval(w.Intent, *actor, ed25519.PrivateKey(key))
+	var proof domain.Approval
+	if *kind == "rfq" {
+		var t domain.RFQTrade
+		if err = json.Unmarshal(raw, &t); err != nil {
+			return err
+		}
+		proof = rfq.SignApproval(t.RFQTradeIntent, *actor, ed25519.PrivateKey(key))
+	} else {
+		var w domain.Withdrawal
+		if err = json.Unmarshal(raw, &w); err != nil {
+			return err
+		}
+		proof = signing.SignApproval(w.Intent, *actor, ed25519.PrivateKey(key))
+	}
 	body, _ := json.Marshal(proof)
-	request, err = http.NewRequest(http.MethodPost, *base+"/v1/withdrawals/"+*id+"/approvals", bytes.NewReader(body))
+	request, err = http.NewRequest(http.MethodPost, *base+resource+*id+"/approvals", bytes.NewReader(body))
 	if err != nil {
 		return err
 	}

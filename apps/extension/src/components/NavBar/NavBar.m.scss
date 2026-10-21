@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
+  height: 64px;
+
+  .leftBox {
+    display: flex;
+    align-items: center;
+
+    .backIcon {
+      height: 14px;
+      cursor: pointer;
+      margin-right: 12px;
+    }
+  }
+
+  .title {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    height: 22px;
+    color: #232c41;
+  }
+
+  .rightBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+
+    height: 100%;
+  }
+}

@@ -1,0 +1,230 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
+}
+
+.title {
+  margin: 32px 16px 0;
+
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+
+  color: #232c41;
+}
+
+.desc {
+  margin: 8px 16px;
+
+  font-size: 14px;
+  line-height: 20px;
+
+  color: #232c41;
+}
+
+.tokenInfoContainer {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin: 20px 16px 0;
+  height: 92px;
+
+  background: #f7f8fa;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.imageContainer {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  position: relative;
+  margin-left: 16px;
+}
+
+.tokenIcon {
+  width: 30px;
+  height: 30px;
+}
+
+.verifyIcon {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 10px;
+  border-radius: 100%;
+}
+
+.tokenInfoContainerRight {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  flex: 1;
+}
+
+.nameContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.shortName {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+
+  color: #232c41;
+}
+
+.tokenName {
+  margin-left: 4px;
+  font-size: 12px;
+  line-height: 14px;
+
+  color: #9ba4b6;
+}
+
+.nameWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 18px;
+}
+
+.trc721 {
+  margin-left: 4px;
+  width: 60px;
+  height: 18px;
+  text-align: center;
+
+  font-size: 12px;
+  line-height: 18px;
+
+  color: #FFA928;
+
+  background: rgba(255, 169, 40, 0.15);
+  border-radius: 11px;
+}
+
+.balanceWrapper {
+  display: flex;
+  flex-direction: row;
+  margin-top: 4px;
+}
+
+.balance {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+
+  color: #232c41;
+}
+
+.money {
+  margin-left: 4px;
+  font-size: 12px;
+  line-height: 16px;
+  color: #6d778c;
+}
+
+.addressWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.addressTitle {
+  font-size: 12px;
+  line-height: 14px;
+  color: #9ba4b6;
+}
+
+.copyIcon {
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+  margin-left: 4px;
+  background-image: url('../../../static/images/icon_copy.svg');
+}
+
+.addedContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #e8efff;
+  padding: 1px 9px 2px;
+
+  font-size: 12px;
+
+  color: #3c76fe;
+  border-radius: 0 0 0 10px;
+}
+
+.inValidContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(232, 67, 67, 0.1);
+  padding: 1px 9px 2px;
+
+  font-size: 12px;
+
+  color: #E84343;
+  border-radius: 0 0 0 10px;
+}
+
+.failTip {
+  margin: 6px 0 0 16px;
+  font-size: 12px;
+  line-height: 17px;
+
+  color: #E84343;
+}
+
+.link {
+  margin: 16px 0 0 16px;
+  font-size: 12px;
+  line-height: 17px;
+
+  color: #3C76FE;
+  cursor: pointer;
+}
+
+.buttonsContainer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.confirmButton {
+  margin: 0 16px;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+
+  font-size: 14px;
+  line-height: 20px;
+
+  color: #FFFFFF;
+  background: #232C41;
+  cursor: pointer;
+
+  &.isDisable {
+    background: #CDD1DA;
+  }
+}
+
+
+.cancelButton {
+  align-self: center;
+  margin: 16px 0 20px;
+  font-size: 14px;
+  line-height: 20px;
+  cursor: pointer;
+
+  color: #232C41;
+}

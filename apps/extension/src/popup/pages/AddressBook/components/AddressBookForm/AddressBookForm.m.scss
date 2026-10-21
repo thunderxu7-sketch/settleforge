@@ -1,0 +1,79 @@
+.AddressBookItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  .label {
+    label {
+      width: 100%;
+      height: 20px;
+      margin-top: 24px;
+      display: block;
+      font-size: 14px;
+      line-height: 20px;
+      color: #232c41;
+    }
+
+    &:first-child {
+      label {
+        margin-top: 12px;
+      }
+    }
+  }
+  .input {
+    width: 100%;
+    height: 44px;
+    margin-top: 12px;
+    display: flex;
+    background: #f7f8fa;
+    border-radius: 10px;
+    padding: 13px 15px;
+    align-items: center;
+
+
+    &:hover {
+      border: 1px solid #232c41;
+    }
+
+    input {
+      flex: 1;
+      height: 100%;
+      border: none;
+      font-size: 14px;
+      color: #505160;
+      outline: none;
+      background: no-repeat;
+    }
+    .copy {
+      font-size: 14px;
+      line-height: 20px;
+      color: #3c76fe;
+      cursor: pointer;
+    }
+    .disabled {
+      color: #bbb;
+      cursor: not-allowed;
+    }
+  }
+  .addressInput {
+    &:after {
+      content: '复制';
+      font-size: 16px;
+      color: #4a90e2;
+    }
+  }
+  .tipError {
+    height: 20px;
+    font-size: 14px;
+    color: #db705c;
+    line-height: 20px;
+    margin-top: 6px;
+  }
+  button {
+    font-size: 14px;
+    line-height: 20px;
+    color: #ffffff;
+    margin-top: 24px;
+  }
+}

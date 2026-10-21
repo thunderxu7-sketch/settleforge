@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "SettleForge",
+  "description": "Independent TRON extension client for the SettleForge wallet engineering lab.",
+  "version": "0.1.0",
+  "version_name": "0.1.0",
+  "action": {
+    "default_popup": "popup/popup.html#/home",
+    "default_title": "SettleForge",
+    "default_icon": "static/icon.png"
+  },
+  "icons": {
+    "16": "static/icon.png",
+    "48": "static/icon.png",
+    "128": "static/icon.png"
+  },
+  "background": {
+    "service_worker": "background/script_loader.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content/content.js"
+      ],
+      "all_frames": true
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "resources": [
+        "injected/injected.js"
+      ]
+    }
+  ],
+  "permissions": [
+    "storage",
+    "unlimitedStorage",
+    "alarms",
+    "tabs",
+    "clipboardWrite"
+  ]
+}

@@ -1,0 +1,232 @@
+.progressBar {
+  margin: 80px 60px 0 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 16px;
+  position: relative;
+}
+
+.progressNode {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #e7e8ec;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .centerCircle {
+    width: 8px;
+    height: 8px;
+    background-color: #232c41;
+    border-radius: 50%;
+    z-index: 1;
+  }
+}
+
+.finishIcon {
+  width: 16px;
+  height: 16px;
+  z-index: 1;
+}
+
+.crossLine {
+  position: absolute;
+  background-color: #e7e8ec;
+  width: 100%;
+  height: 2px;
+}
+
+.progressLabels {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .label1 {
+    height: 22px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    color: #232c41;
+  }
+
+  .label2 {
+    margin-top: 4px;
+    height: 17px;
+    font-size: 12px;
+    line-height: 17px;
+    color: #888998;
+  }
+}
+
+.picContainerStep1 {
+  display: flex;
+  flex-direction: column;
+  margin: 34px 16px 0 16px;
+  background: #f7f8fa;
+  border-radius: 10px;
+
+  height: 150px;
+
+  .connectLedgerImage {
+    margin-top: 36px;
+    width: 100%;
+  }
+
+  .infoStep1 {
+    margin-top: 22px;
+    width: 220px;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    align-self: center;
+    color: #6d778c;
+  }
+}
+
+.picContainerStep2 {
+  margin: 24px 16px 0 16px;
+  display: flex;
+  flex-direction: column;
+  background-color: #f7f8fa;
+  border-radius: 10px;
+  height: 218px;
+  align-items: center;
+
+  .confirmImage {
+    margin-top: 20px;
+    width: 216px;
+    height: 140px;
+  }
+
+  .infoStep2 {
+    font-size: 12px;
+    line-height: 18px;
+    color: #6d778c;
+    margin-top: 20px;
+  }
+}
+
+.picContainerStep3 {
+  display: flex;
+  flex-direction: column;
+  margin: 34px 16px 0 16px;
+  background: #f7f8fa;
+  border-radius: 10px;
+  align-items: center;
+
+  height: 150px;
+
+  .openTronAppImage {
+    margin-top: 40px;
+    width: 240px;
+  }
+
+  .infoStep3 {
+    margin-top: 26px;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    align-self: center;
+    color: #6d778c;
+  }
+}
+
+.noticeContainer {
+  margin: 8px 16px 0 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+
+  .noticeTitle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    line-height: 17px;
+    font-size: 12px;
+    color: #232c41;
+
+    i {
+      width: 12px;
+      height: 12px;
+      background-image: url('./images/icon-warn-tips.svg');
+      margin-right: 4px;
+    }
+  }
+
+  ul {
+    margin-top: 8px;
+    list-style: none;
+    padding: 0;
+    height: 80px;
+    overflow: auto;
+  }
+
+  li {
+    font-size: 12px;
+    line-height: 16px;
+    color: #888998;
+    margin-bottom: 4px;
+  }
+
+  .warning {
+    font-size: 12px;
+    line-height: 17px;
+    color: #e84343;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    i {
+      width: 12px;
+      height: 12px;
+      background-image: url('./images/icon-warn-tips.svg');
+      margin-right: 4px;
+    }
+  }
+}
+
+.nextButton {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 20px;
+  height: 40px;
+  margin: 0 16px;
+  background: #232c41;
+  color: #ffffff;
+  border-radius: 10px;
+
+  &.isLoading {
+    background: #cdd1da;
+  }
+}
+
+.loadingIcon {
+  margin-left: 8px;
+  width: 14px;
+  height: 14px;
+}
+
+.helpLinkContainer {
+  margin: 10px 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17px;
+  color: #6d778c;
+  a {
+    margin-left: 4px;
+    text-decoration-line: underline;
+    color: #3c76fe;
+  }
+}

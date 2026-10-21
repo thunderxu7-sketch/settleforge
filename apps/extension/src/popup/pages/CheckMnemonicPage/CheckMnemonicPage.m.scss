@@ -1,0 +1,135 @@
+.checkMnemonicContainer {
+  .customButton {
+    width: 320px;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+  }
+
+  .selectMnemonicList {
+    border-radius: 4px;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: center;
+    justify-content: space-between;
+  }
+
+  .checkMnemonicItem,
+  .selectMnemonicItem {
+    background: #F7F8FA;
+    border-radius: 6px;
+    width:102px;
+    height:40px;
+    margin-bottom: 10px;
+    text-align: center;
+    position: relative;
+    line-height:40px;
+  }
+
+  .checkMnemonicList {
+    margin-bottom: 12px;
+    margin-top: 13px;
+    width: 328px;
+    height: 200px;
+    overflow-y: auto;
+    border-radius: 4px;
+    .checkMnemonicListWrap{
+      display: flex;
+      flex-flow: row wrap;
+      align-content: center;
+      justify-content: space-between;
+    }
+  }
+
+  .checkMnemonicItem {
+    font-weight: 500;
+    font-size: 14px;
+    color: #9BA4B6;
+    &.active {
+      font-size: 20px;
+      color: #232C41;
+    }
+  }
+
+  .selectMnemonicList {
+    margin-top: 12px;
+    margin-bottom: 8px;
+    width: 328px;
+    cursor: pointer;
+  }
+
+  .selectMnemonicItem{
+    font-weight: 500;
+    font-size: 14px;
+    text-align: center;
+    color: #9BA4B6;
+    &.active{
+      background: #232C41;
+      color: #fff;
+    }
+  }
+
+  .showMnemonic {
+    font-size: 12px;
+    line-height: 17px;
+    color: #505160;
+    border: none;
+    background-color: #fff;
+    position: absolute;
+    right: 12px;
+    cursor: pointer;
+  }
+}
+.checkMnemonicContent {
+  flex-direction: column;
+  padding: 8px 16px 16px;
+  p{
+    font-size: 14px;
+    line-height: 20px;
+    color: #232C41;
+    margin-bottom:0;
+  }
+}
+.customButton {
+  width: 328px;
+  position: absolute;
+  bottom: 20px;
+  left: 16px;
+  right: 16px;
+  background: #232c41;
+  border-radius: 10px;
+  color: #fff;
+  &.invalid{
+    background: #CDD1DA;
+    border-radius: 10px;
+  }
+}
+
+.reviewMnemonic{
+  color: #3C76FE;
+  cursor: pointer;
+
+  &.jp {
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 17px;
+    line-height: 17px;
+    max-width: 58px;
+    white-space: nowrap;
+
+  }
+}
+
+.title {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  height: 22px;
+  color: #232c41;
+
+  &.jp {
+    font-size: 12px;
+  }
+}

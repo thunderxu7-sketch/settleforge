@@ -1,0 +1,118 @@
+.pagePrivacy {
+  position: relative;
+  z-index: 2;
+  margin-top: 80px;
+  background: #fff;
+  height: 100%;
+  border-radius: 15px 15px 0 0;
+}
+.privacyFrame {
+  height: 366px;
+  margin: 16px 8px 16px 16px;
+  padding-right: 8px;
+  overflow-y: scroll;
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      border-radius: 4px;
+      background: #636acc;
+      position: relative;
+      left: -5px;
+    }
+    scrollbar-color: transparent #636acc;
+    scrollbar-width: thin;
+  }
+
+  &::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: transparent;
+    position: relative;
+    left: -5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #eeeeee;
+  }
+  scrollbar-color: transparent #636acc;
+  scrollbar-width: thin;
+}
+.privacyContent {
+  height: 366px;
+  p {
+    font-size: 12px;
+    line-height: 20px;
+    margin-bottom: 8px;
+    color: #888998;
+  }
+  .pTitle {
+    font-weight: 600;
+    color: #505160;
+  }
+}
+.privacyBtn {
+  position: absolute;
+  bottom: 20px;
+  margin: 0 16px;
+  width: 328px;
+  height: 40px;
+  background: #232c41;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #fff;
+  line-height: 40px;
+  text-align: center;
+  cursor: pointer;
+  &.disabled {
+    background: #cdd1da;
+    cursor: no-drop;
+  }
+}
+.pageHeader {
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 58px;
+  padding-right: 16px;
+  border-bottom: 1px solid #efefef;
+  .back {
+    display: inline-block;
+    cursor: pointer;
+    width: 40px;
+    height: 58px;
+    background-image: url(images/back.svg);
+    background-repeat: no-repeat;
+    background-position: 80%;
+  }
+  > span {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25px;
+    color: #505160;
+  }
+  .header-icon {
+    width: 20px;
+    height: 20px;
+    // margin-right: -8px;
+    cursor: pointer;
+  }
+}
+.bgLayer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(35, 44, 65, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 1;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,0 +1,23 @@
+{
+  "jsc": {
+    "parser": {
+      "syntax": "typescript",
+      "tsx": true,
+      "decorators": false,
+      "dynamicImport": false
+    },
+    "transform": {
+      "react": {
+        "runtime": "automatic"
+      }
+    },
+    "target": "es2019",
+    "loose": true,
+    "externalHelpers": false,
+    "keepClassNames": false
+  },
+  "env": {
+    "targets": "last 1 chrome versions",
+    "coreJs": 3
+  }
+}

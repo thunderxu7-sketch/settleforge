@@ -1,0 +1,152 @@
+.dapps {
+  justify-content: flex-start;
+  padding: 0;
+  overflow: auto;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  h1,
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
+  .content {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    height: 530px;
+  }
+
+  .recentDApp {
+    padding: 0 16px;
+    margin-bottom: 30px;
+
+    h1 {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 22px;
+      color: #232c41;
+    }
+    .list {
+      margin-top: 20px;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .recentDAppItem {
+      max-width: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      margin-right: 20px;
+      &:hover {
+        img {
+          box-shadow: 0px 0px 11px 2px rgb(41 72 202 / 20%);
+        }
+        .name {
+          opacity: 1;
+        }
+      }
+      img {
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+        border: 1px solid #eff1fa;
+        box-sizing: border-box;
+        border-radius: 50%;
+      }
+      .name {
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 14px;
+        align-items: center;
+        text-align: center;
+        color: #232c41;
+        mix-blend-mode: normal;
+        opacity: 0.7;
+        max-width: 48px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin-top: 7px;
+      }
+    }
+  }
+
+  .recommendDApp {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    :global(.ant-tooltip-inner) {
+      background: rgba(35, 44, 65, 0.95);
+      border-radius: 6px;
+      font-size: 13px;
+      line-height: 16px;
+      color: #ffffff;
+      padding: 8px 12px;
+    }
+    h1 {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 22px;
+      color: #232c41;
+      padding: 0 16px;
+      margin-bottom: 5px;
+    }
+
+    .list {
+      overflow: auto;
+    }
+
+    .recommendDAppItem {
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      cursor: pointer;
+      &:hover {
+        background: #f8f8f8;
+        .name {
+          opacity: 1;
+        }
+      }
+      img {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 12px;
+      }
+      .text {
+        padding: 20px 0;
+        border-bottom: 1px solid rgb(179, 186, 193, 0.15);
+      }
+      .name {
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 17px;
+        color: #232c41;
+        mix-blend-mode: normal;
+        margin-bottom: 4px;
+        max-width: 265px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .desc {
+        font-size: 13px;
+        line-height: 16px;
+        color: #9ba4b6;
+        max-width: 265px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+}

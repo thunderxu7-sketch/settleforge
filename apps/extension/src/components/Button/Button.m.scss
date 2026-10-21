@@ -1,0 +1,119 @@
+.customButton {
+  display: flex;
+  height: 40px;
+  width: 100%;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  transition: all 200ms ease;
+  border: none;
+
+  color: #ffffff;
+  font-size: 14px;
+  position: relative;
+
+  &:global(.is-valid) {
+    cursor: pointer;
+  }
+
+  &:global(.is-loading) {
+    cursor: wait;
+  }
+
+  .loadingIndicator {
+    height: 10px;
+  }
+
+  &:global(.is-valid)_:not(:global(.is-loading)):hover {
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.18);
+  }
+
+  &:global(.is-valid):not(:global(.is-loading)):focus {
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.18);
+  }
+
+  &.primary {
+    background: #232c41;
+    color: #fff;
+    &:global(.is-valid):not(:global(.is-loading)):hover {
+      //background: #454c67;
+    }
+
+    &:global(.is-valid):not(:global(.is-loading)):focus {
+      //background: #474d64;
+    }
+  }
+  &.secondary {
+    background-color: #fff;
+    border: 1px solid #232c41;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #232c41;
+  }
+
+  &.success {
+    background: #38ad64;
+
+    &:global(.is-valid):not(:global(.is-loading)):hover {
+      background: #53c87f;
+    }
+
+    &:global(.is-valid):not(:global(.is-loading)):focus {
+      background: #36ca6d;
+    }
+  }
+
+  &.danger {
+    background: #ca5e5e;
+
+    &:global(.is-valid):not(:global(.is-loading)):hover {
+      background: #dc6e6e;
+    }
+
+    &:global(.is-valid):not(:global(.is-loading)):focus {
+      background: #e66f6f;
+    }
+  }
+
+  &.white {
+    background: #ffffff;
+    color: #000000;
+
+    &:global(.is-valid):not(:global(.is-loading)):hover {
+      box-shadow: 0 1px 8px 0 #0000000f;
+    }
+
+    &:global(.is-valid):not(:global(.is-loading)):focus {
+      box-shadow: 0 1px 8px 0 #00000030;
+    }
+  }
+
+  &:global(.is-invalid) {
+    opacity: 1;
+    background: #cdd1da;
+    color: #fff;
+  }
+
+  .loadingIcon {
+    margin-left: 10px;
+    width: 16px;
+    height: 16px;
+    display: block;
+    //position: absolute;
+    //right: 45px;
+    background-repeat: no-repeat;
+    animation: spin 1s linear infinite;
+    background-size: 100%;
+    background-image: url('./images/icon-sign-loading.svg');
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

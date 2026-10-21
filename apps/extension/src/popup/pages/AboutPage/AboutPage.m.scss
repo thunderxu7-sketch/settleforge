@@ -1,0 +1,69 @@
+.aboutUs {
+  background: #fff;
+  padding: 0 20px;
+  border-radius: 5px;
+  width: 100%;
+
+  .logoWrap {
+    padding: 44px 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .logoBig {
+      width: 60px;
+      height: 60px;
+      background-image: url(../../../static/images/logo.svg);
+      background-repeat: no-repeat;
+      background-position: 50%;
+      background-size: cover;
+    }
+
+    .logoSmall {
+      width: 100px;
+      height: 19px;
+      background-image: url(../../../static/images/logo2.svg);
+      background-repeat: no-repeat;
+      background-position: 50%;
+      background-size: cover;
+      margin-top: 12px;
+    }
+
+    .version {
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 18px;
+      color: #6D778C;
+      margin-top: 13px;
+    }
+  }
+
+  .listWrap {
+    margin-top: 52px;
+    display: flex;
+    flex-direction: column;
+
+    .item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 14px;
+      line-height: 20px;
+      color: #515060;
+      border-bottom: 1px solid #efefef;
+      height: 49px;
+      cursor: pointer;
+
+      &:after {
+        content: '';
+        width: 8px;
+        height: 12px;
+        background-image: url(./images/icon-arrow-right-gray.svg);
+        background-repeat: no-repeat;
+        background-position: 50%;
+        background-size: cover;
+      }
+    }
+  }
+}

@@ -1,0 +1,239 @@
+.content {
+  padding: 0 16px;
+}
+
+.walletName {
+
+  .name {
+    font-size: 14px;
+    line-height: 20px;
+    color: #232c41;
+  }
+
+  .walletNameInputWrapper {
+    .nameError {
+      font-size: 12px;
+      line-height: 17px;
+      color: #E84343;
+      margin-top: 4px;
+    }
+
+    :global {
+      .ant-input-affix-wrapper {
+        margin-top: 12px;
+        //margin-bottom: 16px;
+        background: #fff;
+        border: 1px solid #dfdfdf;
+        border-radius: 10px;
+        height: 44px;
+        box-shadow: none;
+
+        &:hover {
+          border-color: #232c41;
+        }
+      }
+      .ant-input {
+        background: none;
+      }
+    }
+  }
+}
+
+.walletPassword {
+  margin-top: 16px;
+
+  position: relative;
+
+  > p {
+    font-size: 14px;
+    line-height: 20px;
+    color: #9ba4b6;
+    margin-bottom: 10px;
+  }
+  > input {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #dfdfdf;
+    box-sizing: border-box;
+    height: 44px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 12px;
+    color: #232c41;
+    margin-bottom: 16px;
+  }
+}
+
+.toAccount {
+  padding: 11px 12px;
+  margin-bottom: 16px;
+  background: #f7f8fa;
+  border-radius: 10px;
+  position: relative;
+  > div {
+    font-size: 12px;
+    line-height: 14px;
+    color: #9ba4b6;
+    margin-top: 2px;
+  }
+  span {
+    font-size: 14px;
+    line-height: 20px;
+    color: #232c41;
+  }
+
+  .formatName {
+    text-overflow: ellipsis;
+    max-width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .changeAccount {
+    font-size: 12px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #3c76fe;
+    position: absolute;
+    height: 20px;
+    top: 20px;
+    right: 21px;
+    cursor: pointer;
+  }
+}
+.otherPath {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 17px;
+  align-items: center;
+  text-align: right;
+  color: #3c76fe;
+  width: 80px;
+  position: absolute;
+  right: 0;
+  bottom: 2px;
+  cursor: pointer;
+
+  &.jp {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 72px;
+  }
+}
+.otherPathDisabled {
+  color: #9ba4b6;
+  cursor: not-allowed;
+}
+.remindStatus {
+  font-size: 12px;
+  line-height: 17px;
+  color: #e84343;
+  position: relative;
+  margin-top: -10px;
+  margin-bottom: 16px;
+}
+.button {
+  height: 40px;
+  line-height: 40px;
+  background: #232c41;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+  width: 328px;
+  bottom: 20px;
+  left: 16px;
+  margin: 16px auto 0;
+  &.disabled {
+    background: #cdd1da;
+  }
+}
+
+.addressModal {
+  :global {
+    .ant-modal-footer,
+    .ant-modal-close {
+      display: none;
+    }
+  }
+
+  :global(.ant-modal-body) {
+    padding: 24px 16px;
+  }
+
+  .addressHeader {
+    text-align: center;
+    margin-bottom: 14px;
+    > img {
+      width: 50px;
+      height: 50px;
+      margin: 0 0 12px;
+    }
+    > div {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 22px;
+
+      color: #232c41;
+    }
+  }
+  .addressDes {
+    position: relative;
+    font-size: 14px;
+    line-height: 20px;
+    text-indent: 20px;
+    display: flex;
+    align-items: flex-end;
+    color: #6d778c;
+    > img {
+      width: 12px;
+      height: 12px;
+      position: absolute;
+      left: 0;
+      top: 4px;
+    }
+  }
+  .continue {
+    width: 268px;
+    height: 38px;
+    background: #232c41;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 38px;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+  }
+  .addressReturn {
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #6d778c;
+    margin-top: 16px;
+    cursor: pointer;
+  }
+
+  .resetDesc {
+    font-size: 14px;
+    line-height: 20px;
+    color: #505160;
+    text-indent: 20px;
+    position: relative;
+
+    &.warnColor {
+      color: #db705c;
+    }
+
+    > img {
+      width: 12px;
+      height: 12px;
+      position: absolute;
+      left: 0;
+      top: 4px;
+    }
+  }
+}

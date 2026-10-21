@@ -1,0 +1,219 @@
+.transferDetail {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    margin: 0;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  .content {
+    overflow: auto;
+    padding: 0 16px 70px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    .chain {
+      font-size: 12px;
+      line-height: 17px;
+      text-align: right;
+      color: #232c41;
+      margin-bottom: 30px;
+
+      display: flex;
+      justify-content: space-between;
+      span {
+        max-width: 50%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .transferOverView {
+    width: 100%;
+    .overViewImg {
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .transferTypeName {
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 25px;
+      text-align: center;
+      color: #232c41;
+      margin-top: 10px;
+    }
+    .amount {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 22px;
+      text-align: center;
+      margin-top: 10px;
+      word-break: break-all;
+
+      display: flex;
+      justify-content: center;
+      &.green {
+        color: #1bc186;
+      }
+      &.grey {
+        color: #232c41;
+      }
+    }
+
+    .assetId {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 22px;
+      text-align: center;
+      margin-top: 10px;
+      word-break: break-all;
+      &.green {
+        color: #1bc186;
+      }
+      &.red {
+        color: #db4d3e;
+      }
+    }
+    .accountAddress {
+      margin-top: 20px;
+      width: 328px;
+      background: #f7f8fa;
+      border-radius: 10px;
+
+      padding: 16px 0 19px 12px;
+    }
+
+    .addressInfo {
+      margin-top: 20px;
+      &:first-child {
+        margin-top: 0px;
+      }
+    }
+    .title {
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      line-height: 17px;
+      color: #6d778c;
+      i {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        background-image: url('./images/icon-account-address.svg');
+        background-size: cover;
+        margin-right: 4px;
+      }
+      &.from i {
+        transform: rotateZ(180deg);
+      }
+    }
+    .address {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      line-height: 17px;
+      color: #232c41;
+      margin-top: 8px;
+      width: 300px;
+      word-break: break-all;
+      i {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        background-image: url('./images/icon-copy-grey.svg');
+        background-size: cover;
+        margin-left: 4px;
+        cursor: pointer;
+
+        &:hover {
+          background-image: url('./images/icon-copy-black.svg');
+        }
+      }
+    }
+  }
+
+  .transferInfo {
+    width: 100%;
+    .infoItem {
+      margin-top: 20px;
+    }
+    .name {
+      font-size: 12px;
+      line-height: 17px;
+      color: #6d778c;
+      i {
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        background-image: url('./images/icon-transfer-fee.svg');
+        background-size: cover;
+        margin-left: 4px;
+        position: relative;
+        cursor: pointer;
+      }
+      p {
+        position: relative;
+        top: -1px;
+        display: flex;
+        align-items: center;
+      }
+    }
+    .value {
+      margin-top: 8px;
+      font-size: 14px;
+      line-height: 17px;
+      color: #232c41;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      i {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        background-image: url('./images/icon-copy-grey.svg');
+        background-size: cover;
+        margin-left: 4px;
+        cursor: pointer;
+
+        &:hover {
+          background-image: url('./images/icon-copy-black.svg');
+        }
+      }
+
+      .toastIcon {
+        background-image: url('./images/icon-transfer-fee.svg');
+      }
+    }
+
+    :global(.ant-popover-inner-content) {
+      padding: 0;
+    }
+    .feePopup {
+      padding: 6px 10px;
+      background: rgba(35, 44, 65, 0.9);
+      border-radius: 6px;
+      font-size: 12px;
+      line-height: 17px;
+      display: flex;
+      align-items: flex-end;
+      color: #ffffff;
+    }
+  }
+}

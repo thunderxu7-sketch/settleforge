@@ -1,0 +1,13 @@
+.local/
+.env
+.env.*
+!.env.example
+node_modules/
+dist/
+coverage/
+*.log
+*.prof
+*.test
+.DS_Store
+apps/extension/chrome-extension.zip
+bin/

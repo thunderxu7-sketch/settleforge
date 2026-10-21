@@ -1,0 +1,693 @@
+.signContainer {
+  height: 100%;
+  background-color: #fff;
+  position: relative;
+}
+.signContentContainer {
+  max-height: 430px;
+  &.signContentHeight {
+    max-height: 400px;
+  }
+}
+.signContent {
+  overflow-y: scroll;
+}
+
+.tokenId {
+  color: #3c76fe;
+  cursor: pointer;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 16px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: #232c41;
+  border-bottom: 1px solid #f7f7f7;
+  .arrowIcon {
+    width: 7px;
+    height: 12px;
+  }
+  :global(.logoImg) {
+    width: 20px;
+    height: 20px;
+    margin-top: -1px;
+  }
+  .gap4 {
+    margin-left: 4px;
+  }
+  .hostname {
+    flex-grow: 2;
+  }
+}
+
+.network {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0 18px;
+  > span {
+    font-size: 12px;
+    line-height: 17px;
+    color: #232c41;
+  }
+}
+
+.tokenDes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  .desText {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+    color: #232c41;
+    margin-top: 8px;
+  }
+  .logo {
+    display: flex;
+    flex img {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+    }
+    .tokenLogo {
+      position: relative;
+      margin-left: -10px;
+      flex-shrink: 0;
+      img {
+        width: 40px;
+        height: 40px;
+      }
+      img:nth-child(2) {
+        top: 10px;
+        right: -7px;
+        position: absolute;
+        width: 16px;
+        border-radius: 100%;
+      }
+    }
+  }
+
+  .riskTips {
+    color: #e84343;
+    i {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      &:first-child {
+        position: relative;
+        top: 1px;
+        left: -4px;
+        background-image: url('../images/icon-risk-tips.svg');
+      }
+    }
+  }
+}
+
+.amountInfo {
+  text-align: center;
+  margin-top: 4px;
+  span,
+  .num,
+  .unit {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    color: #232c41;
+    word-break: break-all;
+
+    &:nth-child(1) {
+      padding: 0 10px;
+    }
+  }
+  .unit {
+    margin-top: 4px;
+  }
+}
+
+.transferDetail {
+  margin-top: 20px;
+
+  .fromToInfo {
+    display: flex;
+    margin: 10px 0;
+
+    .addressWrap {
+      background: #f7f8fa;
+      border-radius: 10px;
+      padding: 8px 12px 11px;
+      width: 130px;
+
+      &:last-child {
+        text-align: right;
+      }
+
+      .title {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+        color: #232c41;
+      }
+
+      .address,
+      .name {
+        font-size: 12px;
+        line-height: 14px;
+        color: #9ba4b6;
+        max-width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .arrow {
+      margin: 0 21px;
+    }
+  }
+
+  .transferTabDetail {
+    padding: 0 20px;
+    max-height: 255px;
+    overflow-y: auto;
+  }
+
+  .tradeData {
+  }
+
+  .tradeDetail {
+    .metaDataWrap {
+      // margin-top: -10px;
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #f7f7f7;
+      padding: 12px 0;
+
+      font-size: 12px;
+      line-height: 17px;
+
+      &.column {
+        flex-direction: column;
+        padding: 0;
+        align-items: flex-start;
+        &:not(:first-child) {
+          margin-top: 4px;
+        }
+
+        .content {
+          text-align: left;
+          margin-top: 2px;
+        }
+      }
+
+      &:last-child,
+      &.noBorder {
+        border-bottom: none;
+      }
+
+      &.noBorder {
+        padding-bottom: 0;
+
+        .content {
+          max-width: 220px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+
+      &.mt15 {
+        margin-top: 15px;
+      }
+
+      .title {
+        color: #6d778c;
+      }
+
+      .content {
+        color: #232c41;
+        text-align: right;
+
+        max-width: 208px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        .afterBtn {
+          max-width: 200px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          padding-right: 10px;
+          background: url(../images/icon-arrow-right-thin.svg) right no-repeat;
+          background-size: 6px;
+        }
+
+        .warningTip {
+          max-width: 200px;
+          color: #e84343;
+          img {
+            margin: -2px 2px 0 0;
+          }
+        }
+
+        .contractAddress {
+          color: #3c76fe;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+
+          img {
+            margin-right: 4px;
+          }
+        }
+      }
+    }
+  }
+
+  .hexDataInfo {
+    margin-top: 20px;
+
+    .partOne {
+      font-size: 12px;
+      line-height: 17px;
+      color: #6d778c;
+    }
+  }
+}
+
+.valueWrap {
+  margin-top: 10px;
+  padding: 10px 12px;
+  background: #f7f8fa;
+  border-radius: 10px;
+  font-size: 12px;
+  line-height: 16px;
+  color: #232c41;
+  word-break: break-all;
+}
+
+.tabNav {
+  display: flex;
+  min-height: 56px;
+  margin: 0 20px;
+  padding-top: 20px;
+  border-top: 1px solid #f7f7f7;
+
+  div {
+    font-size: 15px;
+    line-height: 21px;
+    text-align: center;
+    color: #6d778c;
+    &:last-child {
+      margin-left: 30px;
+    }
+  }
+  .active {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 21px;
+    color: #232c41;
+    position: relative;
+    &::after {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 3px;
+      background: #232c41;
+      border-radius: 7px;
+      position: absolute;
+      left: 50%;
+      margin-left: -15px;
+      bottom: 8px;
+    }
+  }
+}
+
+.detail {
+  .item {
+    max-height: 55px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f7f7f7;
+    &:last-child {
+      border: none;
+    }
+    > div {
+      color: #232c41;
+      &:first-child {
+        color: #6d778c;
+      }
+    }
+  }
+  .fees {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+    > img {
+      margin-left: 6px;
+    }
+  }
+  .contract {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    > img {
+      margin-right: 5px;
+    }
+  }
+  .error {
+    display: flex;
+    align-items: center;
+    > img {
+      margin-right: 4px;
+    }
+  }
+}
+
+.signPageBottom {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  padding: 0 16px 20px;
+
+  .buttonClose {
+    text-align: center;
+    margin-top: 9px;
+    span {
+      text-decoration: underline;
+      color: #3c76fe;
+      cursor: pointer;
+    }
+  }
+}
+
+.btns {
+  display: flex;
+  justify-content: space-between;
+  .btn {
+    width: 156px;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #9ba4b6;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #232c41;
+    text-align: center;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid #232c41;
+    }
+    &.current {
+      background: #232c41;
+      border: none;
+      color: #fff;
+    }
+  }
+}
+
+.confirmModalWrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 29;
+  width: 360px;
+  height: 600px;
+  overflow: hidden;
+  background: rgba(35, 44, 65, 0.7);
+  backdrop-filter: blur(10px);
+}
+
+.confirmModalBody {
+  position: relative;
+  background: #fff;
+  border-radius: 20px 20px 0 0;
+  position: absolute;
+  width: 360px;
+  height: 260px;
+  z-index: 30;
+  bottom: 0;
+  left: 0;
+  padding: 20px 16px;
+  .closeBtn {
+    position: absolute;
+    top: 16px;
+    right: 13px;
+    width: 20px;
+    height: 20px;
+    background: url(../images/close.svg) 0 0 no-repeat;
+    background-size: 100%;
+    cursor: pointer;
+  }
+  .voteItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    color: #232c41;
+    border-top: 1px solid #f7f7f7;
+    padding: 12px 0;
+
+    .nameWrap {
+      max-width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .amount {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 14px;
+    }
+
+    .address {
+      color: #9ba4b6;
+      font-size: 12px;
+      line-height: 14px;
+      margin-top: 4px;
+    }
+  }
+  .modalTitle {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: #232c41;
+    padding-bottom: 16px;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .titleWrap {
+    padding-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    color: #232c41;
+
+    .title {
+      color: #232c41 !important;
+    }
+  }
+  .contentWrap {
+    border-top: 1px solid #f7f7f7;
+  }
+}
+
+.vconfirmModalBody {
+  display: flex;
+  flex-direction: column;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  .modalTitle {
+    flex-shrink: 0;
+  }
+  .voteContent {
+    overflow: auto;
+    .name {
+      text-overflow: ellipsis;
+      max-width: 200px;
+      overflow: hidden;
+    }
+  }
+}
+
+.remarkContent {
+  .titleWrap {
+    justify-content: center;
+    margin-top: 0;
+  }
+  .title {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    color: #000000;
+  }
+
+  .contentWrap {
+    font-size: 12px;
+    line-height: 17px;
+    padding-top: 20px;
+    height: 180px;
+    overflow: scroll;
+    word-break: break-all;
+  }
+}
+
+.red {
+  color: #e84343 !important;
+}
+
+.grey {
+  color: #6d778c !important;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background: #f7f7f7;
+}
+
+.detailContent {
+  text-align: center;
+  margin-top: 6px;
+
+  :global(.ant-tooltip-inner) {
+    white-space: pre-wrap;
+    padding: 8px 12px;
+  }
+
+  .approveWrap {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    color: #232c41;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    div {
+      display: inline-block;
+    }
+
+    .address {
+      font-size: 14px;
+      line-height: 17px;
+      color: #3c76fe;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .addressText {
+        margin: 0 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    img {
+      margin: 0 2px 0 0px;
+      &.iconAfter {
+        margin: 0 4px 0 0px;
+      }
+    }
+  }
+
+  .warnTips,
+  .warnTips2 {
+    font-size: 12px;
+    line-height: 17px;
+    max-width: 316px;
+    margin: 8px auto 0;
+    word-break: break-all;
+  }
+
+  .warnTips {
+    color: #e84343;
+  }
+
+  .warnTips2 {
+    color: #ffa928;
+  }
+
+  .tokenWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4px;
+
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    color: #232c41;
+
+    .tokenInfo {
+      display: inline-flex;
+      align-items: center;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+      text-align: center;
+      color: #6d778c;
+      margin-left: 4px;
+    }
+    img {
+      width: 16px;
+      height: 16px;
+      margin-right: 2px;
+      flex-shrink: 0;
+    }
+    .address {
+      color: #3c76fe;
+      cursor: pointer;
+      margin-left: 2px;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+    }
+  }
+}
+
+.tradeWarning {
+  margin-top: 10px;
+  color: #db705c;
+}
+.walletName {
+  max-width: 170px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.noteData {
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

@@ -1,0 +1,34 @@
+.inputCriteria {
+  display: flex;
+  flex-direction: row;
+  padding: 5px 0;
+
+  :global {
+    .statusIcon {
+      width: 10px;
+      height: 10px;
+      align-self: end;
+      margin-bottom: 3px;
+      margin-right: 4px;
+    }
+  }
+
+  span {
+    flex: 1;
+    padding-right: 10px;
+    font-size: 13px;
+    line-height: 16px;
+
+    strong {
+      font-weight: 500;
+    }
+  }
+
+  &.isInvalid {
+    color: #E84343;
+  }
+
+  &.isValid {
+    color: #38ad64;
+  }
+}

@@ -1,0 +1,57 @@
+.customInput {
+    height: 40px;
+    width: 100%;
+    line-height: 40px;
+    border-radius: 4px;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+
+    .inputIcon, .inputStatus svg {
+        height: 12px;
+        width: 40px;
+        line-height: 40px;
+        text-align: center;
+        align-self: center;
+    }
+
+    input {
+        height: 40px;
+        line-height: 40px;
+        border: none;
+        flex: 1;
+        font-size: 14px;
+        padding: 0 16px;
+        background: transparent;
+
+        &.has-icon {
+            padding-left: 0;
+        }
+
+        &.has-status {
+            padding-right: 0;
+        }
+
+        &:hover {
+
+        }
+
+        &:focus {
+
+        }
+    }
+
+    .inputStatus {
+        height: 46px;
+        width: 40px;
+        display: flex;
+
+        svg.is-invalid {
+            color: #AD3838;
+        }
+
+        svg.is-valid {
+            color: #38AD64;
+        }
+    }
+}

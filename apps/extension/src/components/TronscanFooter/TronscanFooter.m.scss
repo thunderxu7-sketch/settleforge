@@ -1,0 +1,31 @@
+.tronscanFooter {
+  position: fixed;
+  bottom: 0;
+  border-top: 1px solid #efefef;
+  min-height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  background-color: #fff;
+
+  .toTronscan {
+    font-size: 14px;
+    line-height: 20px;
+    text-align: right;
+    color: #3c7cf3;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    i {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('./images/icon-lead-jump.svg');
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+}

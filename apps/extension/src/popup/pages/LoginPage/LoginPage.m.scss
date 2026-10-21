@@ -1,0 +1,257 @@
+.container {
+  flex: 1;
+  position: relative;
+  width: 360px;
+  overflow: hidden;
+}
+
+:global {
+  .ant-modal-mask {
+    background: rgba(35, 44, 65, 0.8);
+    backdrop-filter: blur(10px);
+  }
+}
+
+.password {
+  border: 1px solid #6d778c;
+  border-radius: 10px;
+  width: 300px;
+  height: 40px;
+  padding: 10px 0;
+  line-height: 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  margin-top: 40px;
+
+  input {
+    text-align: center;
+    font-size: 14px;
+    line-height: 20px;
+    height: 20px;
+    color: #6d778c;
+  }
+
+  input:focus-visible {
+    outline: 0;
+  }
+}
+
+.loginBg {
+  // width: 100%;
+  // prevent flash
+  width: 360px;
+  height: 325px;
+}
+
+.welcomeLabel {
+  margin-left: 30px;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 50px;
+  height: 50px;
+  align-self: flex-start;
+  color: #232c41;
+}
+
+.loginButton {
+  //margin: 30px auto 0;
+  align-self: center;
+  background: #3c7cf3 !important;
+  border-radius: 10px;
+  width: 300px !important;
+  height: 40px;
+  line-height: 40px;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 0;
+
+  &:global(.is-invalid) {
+    background: rgba(60, 124, 243, 0.6) !important;
+    color: #fff;
+  }
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 0 20px 20px 20px;
+  overflow: hidden;
+
+  .tip {
+    color: #6d778c;
+    opacity: 0.66;
+    text-align: center;
+    mix-blend-mode: normal;
+  }
+
+  .linkWrap {
+    color: rgba(109, 119, 140, 0.66);
+    mix-blend-mode: normal;
+    text-align: center;
+    justify-content: center;
+
+    .link {
+      color: #232c41;
+      text-decoration: underline;
+      text-underline-position: under;
+      cursor: pointer;
+    }
+  }
+}
+
+.errorContainer {
+  margin-left: 30px;
+  height: 30px;
+  width: 100%;
+  color: #ec5b6f;
+  font-size: 12px;
+  line-height: 17px;
+  margin-top: 6px;
+}
+
+.address-modal {
+  :global(.ant-modal-footer),
+  :global(.ant-modal-close) {
+    display: none;
+  }
+
+  :global(.ant-modal-body) {
+    padding: 24px 16px;
+  }
+
+  .address-header {
+    text-align: center;
+    margin-bottom: 20px;
+
+    > img {
+      width: 50px;
+      height: 50px;
+      margin: 0 0 12px;
+    }
+
+    > div {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 22px;
+      color: #232c41;
+    }
+  }
+
+  .address-des {
+    font-size: 14px;
+    line-height: 20px;
+    color: #a7a8af;
+    text-indent: 20px;
+    position: relative;
+
+    > img {
+      width: 12px;
+      height: 12px;
+      position: absolute;
+      left: 0;
+      top: 4px;
+    }
+  }
+
+  .address-return {
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #6d778c;
+    margin-top: 20px;
+    cursor: pointer;
+
+    &:hover {
+      color: #232c41;
+    }
+  }
+
+  .reset-desc {
+    font-size: 14px;
+    line-height: 20px;
+    color: #6d778c;
+    text-indent: 20px;
+    position: relative;
+    margin-bottom: 16px;
+
+    &.warn-color {
+      color: #db705c;
+    }
+
+    &.red {
+      color: #e84343;
+    }
+
+    > img {
+      width: 14px;
+      height: 14px;
+      position: absolute;
+      left: 0;
+      top: 3px;
+    }
+  }
+}
+
+.common-btn {
+  height: 38px;
+  line-height: 38px;
+  background: #232c41;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+
+  &.disabled {
+    background: #cdd1da;
+    cursor: no-drop;
+  }
+}
+
+.wallet-btn {
+  margin-top: 24px;
+}
+
+.passwordContainer {
+  margin: 20px 30px 0;
+
+  .inputWrapper {
+    position: relative;
+  }
+
+  .eye {
+    position: absolute;
+    right: 0;
+    top: 5px;
+    cursor: pointer;
+  }
+
+  input {
+    font-size: 16px;
+    line-height: 22px;
+    width: 100%;
+    padding: 0 0 10px 0;
+    border: none;
+    border-bottom: 1px solid #9ba4b6;
+
+    &::placeholder {
+      color: #6d778c;
+    }
+
+    &:focus::placeholder {
+      color: transparent;
+    }
+
+    &:focus-visible {
+      outline: 0;
+      border-bottom: 1px solid #232c41;
+    }
+  }
+}
+
+.placeHolderContainer {
+  height: 20px;
+  color: #6d778c;
+}

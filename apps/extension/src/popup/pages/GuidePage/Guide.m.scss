@@ -1,0 +1,201 @@
+.pageGuide {
+  position: relative;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .guideSelect {
+    position: absolute;
+    top: 20px;
+    right: 16px;
+  }
+  .guideImgBox {
+    height: 334px;
+    width: 100%;
+  }
+
+  .guideImg {
+    width: 100%;
+    align-self: center;
+  }
+  .guideDes {
+    //margin-top: 56px;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 34px;
+    color: #232c41;
+    text-align: center;
+  }
+
+  .guideText {
+    margin: 8px 30px 0;
+    font-size: 12px;
+    line-height: 17px;
+    height: 17px;
+    color: #6d778c;
+    text-align: center;
+  }
+
+  .importButton {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 40px;
+    cursor: pointer;
+
+    border: 0.8px solid #3C7CF3;
+    border-radius: 10px;
+
+    span {
+      font-size: 14px;
+      line-height: 20px;
+      color: #3C7CF3;
+    }
+
+    img {
+      height: 12px;
+      width: 12px;
+      margin-left: 10px;
+    }
+
+    &:hover {
+      background: rgba(60, 124, 243, 0.1);
+      border: none;
+    }
+  }
+
+  .createButton {
+    margin-top: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 40px;
+    cursor: pointer;
+    background: #3C7CF3;
+
+    border-radius: 10px;
+
+    span {
+      font-size: 14px;
+      line-height: 20px;
+      color: #FFFFFF;
+    }
+
+    img {
+      width: 12px;
+      height: 12px;
+      margin-left: 10px;
+      //background: red;
+    }
+
+    &:hover {
+      opacity: 0.88;
+    }
+
+  }
+
+  .guideLink {
+    width: 160px;
+    height: 70px;
+    border: 1px solid #232c41;
+    border-radius: 16px 0 0 16px;
+    padding: 17px 14px;
+    text-align: center;
+    cursor: pointer;
+    background: #232c41;
+    box-shadow: 10px 0px 20px rgba(35, 44, 65, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    img {
+      width: 18px;
+      height: 18px;
+      vertical-align: top;
+      margin-right: 10px;
+    }
+    p {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 18px;
+      margin-bottom: 0;
+      text-align: left;
+    }
+
+    &.import {
+      background: #f3f6fb;
+      border-radius: 0 16px 16px 0;
+      color: #232c41;
+    }
+  }
+  .guideFooter {
+    line-height: 17px;
+    padding: 0 36px;
+    font-size: 12px;
+    color: #6d778c;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    margin-bottom: 0;
+    text-align: center;
+    > a {
+      text-decoration-line: underline;
+      color: #232c41;
+    }
+  }
+  .guideSelect {
+    border: 1px solid #cdd1da;
+    border-radius: 8px;
+    overflow: hidden;
+
+    &:hover {
+      border: 1px solid #232c41;
+    }
+  }
+  :global {
+    .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+      border: none;
+      height: 22px;
+    }
+    .ant-select-single:not(.ant-select-customize-input) .ant-select-selector .ant-select-selection-search-input {
+      height: 22px;
+    }
+    .ant-select-single .ant-select-selector .ant-select-selection-item, .ant-select-single .ant-select-selector .ant-select-selection-placeholder {
+      font-size: 12px;
+      line-height: 22px;
+      padding-right: 9px;
+    }
+
+    .ant-select-arrow {
+      top: 45%;
+      right: 6px;
+    }
+  }
+}
+.guideDropdown {
+  // margin-top: -3px;
+  // transform: translateY(-3px);
+  background: rgba(35, 44, 65, 0.86);
+  border-radius: 4px;
+  padding: 0 !important;
+  :global {
+    .ant-select-item-option-content {
+      color: #fff;
+    }
+    .ant-select-item-option-active:not(.ant-select-item-option-disabled) {
+      background-color: rgba(85, 101, 141, 0.9);
+      // background: transparent;
+      color: #fff;
+    }
+    .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+      background-color: rgba(85, 101, 141, 0.9);
+      color: #fff;
+    }
+  }
+}

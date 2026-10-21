@@ -1,0 +1,84 @@
+.versionUpdateModal {
+  position: relative;
+  .overview {
+    text-align: center;
+    margin: 20px 0;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
+    color: #232c41;
+    span {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 22px;
+      text-align: center;
+      color: #232c41;
+      margin-left: 4px;
+    }
+  }
+  .detail {
+    width: 100%;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #232c41;
+    white-space: pre-wrap;
+
+    max-height: 200px;
+    overflow: scroll;
+    margin: 0 4px;
+  }
+
+  // .topImg {
+  //   position: absolute;
+  //   top: 12px;
+  // }
+
+  :global(.ant-modal-body),
+  :global(.ant-modal-footer) {
+    border: none;
+    padding: 0;
+  }
+
+  :global(.ant-modal-wrap) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  :global(.ant-modal) {
+    margin: 0 30px;
+    padding: 0;
+    width: auto !important;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+
+    position: static;
+  }
+
+  :global(.ant-modal-content) {
+    padding: 24px 16px;
+    width: 100%;
+
+    button {
+      border: none;
+      box-sizing: border-box;
+      border-radius: 10px;
+      width: 268px;
+      height: 38px;
+      font-size: 14px;
+      line-height: 20px;
+      margin-top: 30px;
+      background: #232c41;
+      color: #ffffff;
+    }
+  }
+
+  :global(.ant-modal-body) {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+  }
+}

@@ -1,0 +1,229 @@
+.addressBook {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  .content {
+    padding: 0px 16px;
+  }
+
+  .addItem {
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 20px;
+    color: #3c76fe;
+  }
+
+  .input {
+    margin-top: 10px;
+    height: 34px;
+    padding: 7px 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    background: #ffffff;
+    border: 1px solid #dfdfdf;
+    border-radius: 10px;
+    outline: none;
+
+    &:focus-visible {
+      border-bottom: 1px solid #232c41;
+    }
+
+    input {
+      border: none;
+      background-color: transparent;
+      flex: 1 1;
+      font-size: 12px;
+      color: #515060;
+      outline: none;
+
+    }
+
+
+    .inputSuffix {
+      width: 16px;
+      height: 16px;
+      position: relative;
+      top: -3px;
+    }
+  }
+
+  .searchInput {
+    height: 36px;
+    background: #FFFFFF;
+    border: 1px solid #DFDFDF;
+    border-radius: 10px;
+    outline: none;
+    margin-bottom: 10px;
+    box-shadow: none;
+
+    //&:focus {
+    //  outline: none;
+    //}
+
+    :focus-visible {
+      box-shadow: none;
+      outline: none;
+    }
+
+    &:global(.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover) {
+      border-color: #232c41;
+    }
+  }
+
+  .searchInputIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .book {
+    overflow: scroll;
+    height: 470px;
+    flex: 1;
+    .item {
+      margin-top: 12px;
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background: #f7f8fa;
+      cursor: pointer;
+      .r2 {
+        padding: 12px 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        &:hover {
+          background: #ebecef;
+        }
+        &:last-child {
+          font-size: 14px;
+          color: #888998;
+        }
+        .addressName {
+          height: 22px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          font-weight: 700;
+          font-size: 14px;
+          line-height: 17px;
+          color: #232c41;
+          .search {
+            color: #65aaef;
+          }
+        }
+        .address {
+          margin-top: 4px;
+          height: 19px;
+          font-size: 12px;
+          line-height: 14px;
+          color: #6d778c;
+          .search {
+            color: #65aaef;
+          }
+        }
+        .remarks {
+          margin-top: 4px;
+          font-size: 12px;
+          line-height: 17px;
+          color: #6d778c;
+          word-break: break-word;
+        }
+      }
+      &:hover {
+        .url {
+          .delete {
+            opacity: 1;
+          }
+        }
+      }
+      .url,
+      .row {
+        padding-left: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        & > span {
+          &:nth-child(1) {
+            margin-right: 10px;
+          }
+        }
+        & > a {
+          color: #515060;
+          &:hover {
+            color: #0006ec;
+            text-decoration: underline;
+          }
+        }
+      }
+      .row {
+        height: 30px;
+        font-size: 14px;
+        color: #888998;
+      }
+    }
+  }
+
+  .blankSearch {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+    img {
+      display: block;
+      width: 157px;
+      height: 112px;
+    }
+    span {
+      font-size: 12px;
+      line-height: 17px;
+      color: #9ba4b6;
+    }
+  }
+}
+
+.addAddressModal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+  background: rgba(35, 44, 65, 0.86);
+  backdrop-filter: blur(10px);
+
+  .addAddress {
+    background: #ffffff;
+    border-radius: 2px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 80px auto 0;
+    height: auto;
+    border-radius: 12px;
+  }
+  .close {
+    font-size: 0;
+    cursor: pointer;
+    i {
+      float: right;
+      display: inline-block;
+      height: 20px;
+      width: 20px;
+      background-image: url('./images/icon-close-modal.svg');
+    }
+  }
+  .title {
+    text-align: left;
+    font-size: 18px;
+    color: #505160;
+    clear: both;
+    line-height: 40px;
+  }
+}

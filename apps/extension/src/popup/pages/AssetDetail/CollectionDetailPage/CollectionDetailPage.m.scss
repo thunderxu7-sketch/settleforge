@@ -1,0 +1,118 @@
+.collectionDetail {
+  position: relative;
+  height: 100%;
+  p {
+    margin: 0;
+    padding: 0;
+  }
+  .title {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22.4px;
+    color: #232c41;
+    max-width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .navDetail {
+    font-size: 14px;
+    line-height: 20px;
+    color: #3c76fe;
+    cursor: pointer;
+  }
+  .content {
+    padding: 0 16px 16px 16px;
+    display: flex;
+    flex-direction: column;
+
+    .collectionImg {
+      height: 180px;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 12px;
+      img {
+        height: 100%;
+      }
+    }
+    .name {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 19px;
+      color: #232c41;
+      text-align: center;
+      margin-bottom: 3px;
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .assetId {
+      font-size: 14px;
+      line-height: 20px;
+      color: #888998;
+      text-align: center;
+      margin-bottom: 24px;
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .black {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 19px;
+      color: #232c41;
+    }
+
+    .desc {
+      background: #f7f8fa;
+      border-radius: 10px;
+      padding: 12px 10px 28px 10px;
+      height: 197px;
+      overflow: scroll;
+    }
+
+    .head {
+      font-size: 12px;
+      line-height: 17px;
+      color: #6d778c;
+      margin-bottom: 8px;
+    }
+
+    .text {
+      font-size: 12px;
+      line-height: 14px;
+      color: #6d778c;
+    }
+
+    button {
+      position: absolute;
+      width: 328px;
+      bottom: 16px;
+      .send {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin-right: 6px;
+        background-image: url('./images/icon-btn-send.svg');
+      }
+    }
+    :global(.ant-btn) {
+      height: 40px;
+      background: #232c41;
+      border: none;
+      color: #fff;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      padding: 0px 15px;
+      border-radius: 10px;
+      &::after {
+        display: none;
+      }
+    }
+  }
+}

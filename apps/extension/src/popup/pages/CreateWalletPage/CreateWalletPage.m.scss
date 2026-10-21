@@ -1,0 +1,115 @@
+.createWalletContainer {
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  .createWalletContent {
+    width: 100%;
+    padding: 0 16px 18px 16px;
+    input::-webkit-input-placeholder,
+    textarea::-webkit-input-placeholder {
+      color: #c2c2d5;
+      font-size: 14px;
+    }
+  }
+  .pageIntro {
+    margin-bottom: 16px;
+    color: #232c41;
+  }
+  .nameArea {
+    margin-bottom: 20px;
+    p {
+      font-size: 14px;
+      line-height: 20px;
+      color: #232c41;
+    }
+    .passwordWarn {
+      font-size: 12px;
+      line-height: 17px;
+      color: #515060;
+      margin-top: 4px;
+      margin-bottom: 6px;
+    }
+
+    .nameError {
+      font-size: 12px;
+      line-height: 17px;
+      color: #E84343;
+      margin-top: 4px;
+    }
+    :global {
+      .ant-input-affix-wrapper {
+        margin-top: 12px;
+        background: #fff;
+        border: 1px solid #dfdfdf;
+        border-radius: 10px;
+        height: 44px;
+        box-shadow: none;
+
+        &:hover {
+          border-color: #232c41;
+        }
+      }
+      .ant-input {
+        background: none;
+        color: #232C41;
+      }
+    }
+  }
+
+  .customButton {
+    width: 328px;
+    position: absolute;
+    bottom: 20px;
+    left: 16px;
+    right: 16px;
+    background: #cdd1da;
+    border-radius: 10px;
+    &.isValid {
+      background: #232c41;
+      cursor: pointer;
+    }
+    //&:nth-child(2) {
+    //  bottom: 72px;
+    //}
+  }
+
+  .createSuccess {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    img {
+      width: 120px;
+      height: 120px;
+      margin-top: 100px;
+    }
+    .title {
+      margin-top: 20px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 22px;
+      color: #232c41;
+    }
+    .desc {
+      margin-top: 8px;
+      width: 240px;
+      text-align: center;
+      font-size: 12px;
+      line-height: 17px;
+      color: #6d778c;
+    }
+  }
+}
+.toSave {
+  width: 328px;
+  position: absolute;
+  bottom: 20px;
+  left: 16px;
+  right: 16px;
+  background: #cdd1da;
+  border-radius: 10px;
+}

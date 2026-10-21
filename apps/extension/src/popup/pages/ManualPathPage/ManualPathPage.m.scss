@@ -1,0 +1,233 @@
+.content {
+  padding: 0 16px;
+}
+
+.walletPassword {
+  position: relative;
+  .name {
+    font-size: 14px;
+    line-height: 20px;
+    color: #232c41;
+    //margin-bottom: 10px;
+  }
+
+  .nameError {
+    font-size: 12px;
+    line-height: 17px;
+    color: #E84343;
+    margin-top: 4px;
+  }
+
+  > p {
+    font-size: 14px;
+    line-height: 20px;
+    color: #9ba4b6;
+  }
+
+  :global {
+    .ant-input-affix-wrapper {
+      margin-top: 10px;
+      background: #fff;
+      border: 1px solid #dfdfdf;
+      border-radius: 10px;
+      height: 44px;
+      box-shadow: none;
+
+      &:hover {
+        border-color: #232c41;
+      }
+    }
+    .ant-input {
+      background: none;
+      color: #232c41;
+    }
+  }
+}
+
+.titleTips {
+  margin-top: 20px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #232c41;
+  height: 20px;
+  .tooltipImg {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-left: 4px;
+    margin-top: 2px;
+    vertical-align: top;
+  }
+}
+
+.walletPath {
+  background: #ffffff;
+  border: 1px solid #dfdfdf;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  font-size: 12px;
+  line-height: 24px;
+  align-items: center;
+  color: #9ba4b6;
+  > input {
+    background: #ffffff;
+    border: 1px solid #232c41;
+    box-sizing: border-box;
+    border-radius: 4px;
+    width: 50px;
+    height: 24px;
+    font-size: 12px;
+    line-height: 24px;
+    color: #000;
+    text-align: center;
+    white-space: nowrap;
+    margin: 0 7px;
+    outline: none;
+    &:focus {
+      border: 1px solid #232c41;
+    }
+  }
+}
+
+.addressInfos {
+  max-height: 266px;
+  overflow-y: scroll;
+}
+
+.addressInfo {
+  position: relative;
+  background: #f8f9fb;
+  border-radius: 2px;
+  padding: 16px 12px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .aiTitle {
+    justify-content: space-between;
+  }
+  &.active {
+    background: #f7f8fa;
+    border-radius: 10px;
+    .aiTitle {
+      > span {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 17px;
+        color: #232c41;
+      }
+      .selectAddress {
+        background-image: url(../../common/images/selected-address-icon.svg);
+      }
+    }
+    .aiBalance {
+      font-size: 12px;
+      line-height: 17px;
+      color: #232c41;
+    }
+    .aiPath {
+      color: #c2c8d5;
+    }
+    //.aiNum {
+    //  color: rgba(255, 255, 255, 0.7);
+    //  background: rgba(255, 255, 255, 0.0986);
+    //}
+  }
+
+  &.imported {
+    background: #f8f9fb;
+    .aiTitle {
+      > span {
+        color: #c2c2d5;
+      }
+    }
+    .aiBalance {
+      color: #c2c2d5;
+    }
+    .aiPath {
+      color: #c2c2d5;
+    }
+    .aiNum {
+      color: rgba(255, 255, 255, 0.7);
+      background: #e2e5ec;
+    }
+    .selectAddress {
+      background-image: url(../../common/images/selected-address-icon.svg);
+    }
+  }
+}
+.aiTitle {
+  > span {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #232c41;
+
+    &:nth-child(1) {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      width: calc(100% - 60px);
+    }
+  }
+  .selectAddress {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    //TODO
+    background: url(../../common/images/select-address-icon.svg) 0 0 no-repeat;
+    background-size: 100%;
+  }
+  .selectTxt {
+    color: #515060;
+    font-size: 12px;
+  }
+}
+.aiBalance,
+.aiPath {
+  font-size: 12px;
+  line-height: 17px;
+  color: #232c41;
+}
+.aiNum {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  min-width: 28px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  color: #888988;
+  background: #e2e5ec;
+  border-radius: 8px 0 0 0;
+}
+
+.button {
+  height: 40px;
+  line-height: 40px;
+  background: #232c41;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+  width: 328px;
+  bottom: 20px;
+  left: 16px;
+  margin: 16px auto 0;
+  &.disabled {
+    background: #cdd1da;
+  }
+}
+
+:global {
+  .tooltip {
+    padding: 0 16px;
+  }
+}

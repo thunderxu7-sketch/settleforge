@@ -1,0 +1,98 @@
+.walletSearchContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+  margin: 16px;
+
+  .inputBoxWrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .inputBox {
+      background: #ffffff;
+      border: 1px solid #232c41;
+      box-sizing: border-box;
+      border-radius: 8px;
+      height: 36px;
+      // line-height: 36px;
+      padding: 0 12px 0 30px;
+      width: 248px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+
+      input {
+        border: none;
+        outline: none;
+        width: 100%;
+        margin-right: 12px;
+      }
+
+      .searchIcon {
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-image: url(../../images/account_search.svg);
+
+        position: absolute;
+        left: 12px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+      }
+
+      .clearInput {
+        min-width: 12px;
+        height: 12px;
+        cursor: pointer;
+        background: url(../../images/input_clear.svg) no-repeat;
+      }
+    }
+
+    .cancelBtn {
+      font-weight: 400;
+      font-size: 14px;
+      height: 20px;
+      line-height: 20px;
+      color: #6d778c;
+      text-align: right;
+      padding-left: 12px;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+  }
+
+  .searchResult {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+
+    margin-top: 16px;
+
+    .title {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 20px;
+      color: #232c41;
+    }
+
+    .searchNoResult {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform: translateY(50%);
+
+      .noResultText {
+        font-size: 12px;
+        line-height: 17px;
+        color: #9ba4b6;
+      }
+    }
+  }
+}

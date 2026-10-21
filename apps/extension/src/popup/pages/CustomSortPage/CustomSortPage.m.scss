@@ -1,0 +1,150 @@
+.container {
+  :global(.ant-tooltip) {
+    font-size: 12px;
+  }
+}
+
+.flAcent {
+  display: flex;
+  align-items: center;
+}
+
+.rightElement {
+  font-size: 14px;
+  line-height: 20px;
+  color: #3c76fe;
+  cursor: pointer;
+  height: 58px;
+  display: flex;
+  align-items: center;
+}
+
+.sortContent {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+
+  .tabMenu {
+    display: flex;
+    padding: 0 20px 5px 20px;
+    justify-content: space-between;
+    align-items: center;
+
+    .tabNav {
+      display: flex;
+      align-items: center;
+
+      & > div {
+        cursor: pointer;
+        font-size: 14px;
+        line-height: 20px;
+        color: rgba(80, 81, 96, 0.5);
+        margin-right: 20px;
+      }
+
+      .active {
+        color: #232c41;
+        font-weight: 600;
+
+        border-bottom: 2px solid #232c41;
+      }
+    }
+  }
+
+  .content {
+    margin: 10px 0px 0;
+    height: 490px;
+
+    .ant-tree-draggable-icon {
+      display: none;
+    }
+
+    .assetItem {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 16px;
+      position: relative;
+      align-items: center;
+      cursor: pointer;
+      width: 100%;
+      border-bottom: 1px solid #f7f7f7;
+
+      &.fix {
+        background: #f7f8fa;
+        border-radius: 10px;
+        padding: 12px 12px;
+        margin: 0px 16px 3px;
+        width: calc(100% - 32px);
+      }
+
+      .leftLogo {
+        position: relative;
+
+        & > img {
+          &.verify {
+            bottom: 0px;
+            right: 6px;
+            position: absolute;
+            width: 10px;
+            border-radius: 100%;
+          }
+
+          &.delIcon {
+            margin-right: 6px;
+          }
+        }
+      }
+
+      .tokenLogo {
+        width: 24px;
+        height: 24px;
+        margin-right: 8px;
+        border-radius: 24px;
+      }
+
+      .symbol {
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 17px;
+        letter-spacing: 0px;
+        text-align: left;
+        max-width: 80px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        .red {
+          color: #d65858;
+        }
+      }
+
+      .tokenBalance {
+        font-size: 14px;
+        font-weight: 900;
+        line-height: 17px;
+        letter-spacing: 0px;
+        text-align: right;
+        max-width: 140px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .tokenBalanceUsd {
+        font-weight: 500;
+        line-height: 12px;
+        letter-spacing: 0px;
+        text-align: right;
+        color: rgba(155, 164, 182, 1);
+        margin-top: 4px;
+        // width: 120%;
+        font-size: 12px;
+      }
+
+      .menuIcon {
+        margin-left: 14px;
+      }
+    }
+  }
+}

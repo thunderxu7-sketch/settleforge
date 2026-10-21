@@ -1,0 +1,44 @@
+.content {
+  padding: 0 16px;
+}
+.titleTips {
+  margin-bottom: 12px;
+  justify-content: space-between;
+  > span {
+    font-size: 14px;
+    line-height: 20px;
+    color: #232c41;
+  }
+  > em {
+    font-size: 12px;
+    color: #636acc;
+    cursor: pointer;
+  }
+  .text {
+    font-size: 12px;
+    line-height: 17px;
+    color: #6d778c;
+  }
+}
+.addressInfos {
+  max-height: 425px;
+  overflow-y: scroll;
+}
+.button {
+  height: 40px;
+  line-height: 40px;
+  background: #232c41;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+  width: 328px;
+  bottom: 20px;
+  left: 16px;
+  margin: 16px auto 0;
+  &.disabled {
+    background: #cdd1da;
+  }
+}

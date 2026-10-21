@@ -1,0 +1,7 @@
+try {
+  importScripts(<% for (let key in htmlWebpackPlugin.files.js) { %>
+    '<%= htmlWebpackPlugin.files.js[key] %>',<% } %>
+  );
+} catch (e) {
+  console.error(e);
+}

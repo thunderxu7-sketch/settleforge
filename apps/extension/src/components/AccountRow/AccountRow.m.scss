@@ -1,0 +1,110 @@
+
+.addressInfos {
+  max-height: 266px;
+  overflow-y: scroll;
+}
+
+.addressInfo {
+  position: relative;
+  background: #f8f9fb;
+  border-radius: 10px;
+  padding: 14px 14px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .aiTitle {
+    justify-content: space-between;
+  }
+  &.active {
+    background: #f7f8fa;
+    border-radius: 10px;
+    .aiTitle {
+      > span {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 17px;
+        color: #232c41;
+      }
+      .selectAddress {
+        width: 16px;
+        height: 16px;
+        background-image: url(../../popup/common/images/selected-address-icon.svg);
+      }
+    }
+    .aiBalance {
+      font-size: 12px;
+      color: #232c41;
+    }
+  }
+
+  &.imported {
+    background: #f8f9fb;
+    .aiTitle {
+      > span {
+        color: #c2c2d5;
+      }
+    }
+    .aiBalance {
+      color: #c2c2d5;
+    }
+    .aiPath {
+      color: #c2c2d5;
+    }
+    .aiNum {
+      color: rgba(255, 255, 255, 0.7);
+      background: #e2e5ec;
+    }
+    .selectAddress {
+      background-image: url(../../popup/common/images/selected-address-icon.svg);
+    }
+  }
+}
+.aiTitle {
+  > span {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #232c41;
+
+    &:nth-child(1) {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      width: calc(100% - 60px);
+    }
+  }
+  .selectAddress {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    //TODO
+    background: url(../../popup/common/images/select-address-icon.svg) 0 0 no-repeat;
+    background-size: 100%;
+  }
+  .selectTxt {
+    color: #515060;
+    font-size: 12px;
+  }
+}
+.aiBalance,
+.aiPath {
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 14px;
+  color: #232c41;
+}
+.aiNum {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  min-width: 28px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  color: #888988;
+  background: #e2e5ec;
+  border-radius: 8px 0 8px 0;
+}

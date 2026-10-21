@@ -1,0 +1,38 @@
+name: CI
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  custody:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.27.x'
+      - run: sudo apt-get update && sudo apt-get install -y softhsm2 ripgrep
+      - run: docker compose up -d --wait
+      - run: make vet test-integration
+      - run: go run ./cmd/mpclab --generate
+      - run: TEST_SIGNER_MODE=mpc TEST_MPC_DIR="$PWD/.local/mpc" make test-bitcoin
+      - shell: bash
+        run: |
+          bash scripts/setup-softhsm.sh
+          source .local/softhsm/test.env
+          go test -v ./internal/signing -run TestPKCS11
+          TEST_SIGNER_MODE=pkcs11 make test-bitcoin
+      - if: always()
+        run: docker compose down
+  extension-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install -g pnpm@7.33.7
+      - working-directory: apps/extension
+        run: pnpm install --frozen-lockfile
+      - working-directory: apps/extension
+        run: pnpm run build:prd:chrome

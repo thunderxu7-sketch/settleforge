@@ -1,0 +1,422 @@
+.transferStep1 {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  .title {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    color: #232c41;
+
+    display: flex;
+    align-items: center;
+    span {
+      font-size: 14px;
+      line-height: 20px;
+      color: #232c41;
+      margin-left: 4px;
+    }
+  }
+
+  :global(.ant-modal) {
+    width: 300px !important;
+    top: 80px;
+  }
+  :global(.ant-modal-content) {
+    border-radius: 12px;
+  }
+  :global(.ant-modal-body) {
+    padding: 24px 16px 0 16px;
+  }
+  :global(.ant-modal-footer) {
+    padding: 24px 16px;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    button {
+      width: 127px;
+      height: 38px;
+      border-radius: 10px;
+      &:first-child {
+        color: #232c41;
+        border: 1px solid #c0c7d6;
+
+        &:hover {
+          border: 1px solid #232c41;
+        }
+      }
+      &:last-child {
+        background: #232c41;
+        color: #fff;
+        border: none;
+      }
+    }
+    :global(button.ant-btn-text) {
+      background: #cdd1da;
+      border-radius: 10px;
+      color: #fff;
+    }
+  }
+}
+
+.content {
+  background: #fff;
+  padding: 0 20px 20px;
+
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.receiverInput {
+  .title {
+    font-size: 14px;
+    line-height: 20px;
+    color: #232c41;
+    margin-bottom: 12px;
+  }
+
+  .inputBox {
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+    height: 44px;
+
+    :global(.ant-input) {
+      height: 100%;
+      border: 1px solid #dfdfdf;
+      border-radius: 10px;
+      box-shadow: none;
+      padding: 4px 12px;
+    }
+    :global(.ant-input:focus) {
+      border: 1px solid #232c41;
+    }
+    :global(.ant-input:hover) {
+      border: 1px solid #232c41;
+    }
+    :global(.ant-input[disabled]) {
+      color: #232c41;
+      background-color: #fff;
+    }
+
+    .pasteBtn {
+      position: absolute;
+      top: 7px;
+      right: 12px;
+      bottom: 7px;
+      padding: 3px 9px;
+      background-color: #fff;
+      border-radius: 2px;
+      cursor: pointer;
+      &:hover,
+      &:active {
+        background-color: #636acc;
+        color: #fff;
+      }
+    }
+    .clearBtn {
+      position: absolute;
+      top: 1px;
+      right: 12px;
+      bottom: 1px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      background: #fff;
+      padding: 5px 0 5px 5px;
+      i {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        background-image: url('./images/icon-clear-address.svg');
+      }
+    }
+  }
+
+  .inputCriteria {
+    display: flex;
+    margin-top: 6px;
+    span {
+      font-size: 12px;
+      line-height: 17px;
+    }
+    i {
+      display: inline-block;
+      min-width: 12px;
+      height: 12px;
+      margin-right: 4px;
+      margin-top: 3px;
+    }
+  }
+
+  .addressAutoComplete {
+    margin-top: 8px;
+    max-height: 320px;
+    overflow: auto;
+  }
+
+  .addressBook {
+    color: #3c76fe;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    i {
+      display: inline-block;
+      margin-right: 5px;
+      width: 16px;
+      height: 16px;
+      background-image: url('./images/icon-address-book.svg');
+    }
+    .addBookSpan {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &.error {
+    .inputBox :global(.ant-input) {
+      border: 1px solid #e84343;
+    }
+    .inputCriteria {
+      color: #e84343;
+      i {
+        background-image: url('./images/icon-error-input-new.svg');
+        background-size: 12px 12px;
+      }
+    }
+  }
+
+  &.warn {
+    .inputBox :global(.ant-input) {
+      border: 1px solid #ffa928;
+    }
+    .inputCriteria {
+      color: #ffa928;
+      i {
+        background-image: url('./images/icon-warn-input.svg');
+      }
+    }
+  }
+
+  &.info {
+    .inputBox :global(.ant-input) {
+      border: 1px solid #2374ee;
+    }
+    .inputCriteria {
+      color: #2374ee;
+      i {
+        display: none;
+      }
+      color: #2374ee;
+    }
+  }
+}
+
+.addressCollection {
+  margin-top: 22px;
+  flex: 1;
+  :global(.ant-tabs-tab) {
+    color: #6d778c !important;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    padding: 2px 0;
+  }
+  :global(.ant-tabs-tab-active .ant-tabs-tab-btn) {
+    color: #232c41 !important;
+  }
+  :global(.ant-tabs-tab-btn:focus) {
+    color: #232c41 !important;
+  }
+  :global(.ant-tabs-nav-wrap) {
+    overflow: visible !important;
+  }
+
+  :global(.ant-tabs-ink-bar) {
+    background-color: #232c41;
+    border-radius: 20px / 9px;
+    transform: scaleX(0.5);
+    bottom: -2px !important;
+  }
+  :global(.ant-tabs-top > .ant-tabs-nav:before) {
+    border: none;
+  }
+  :global(.ant-tabs-top > .ant-tabs-nav) {
+    margin: 0 0 8px;
+  }
+  :global(.ant-tabs-tabpane) {
+    overflow: auto;
+    max-height: 300px;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .emptyList {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    margin-top: 80px;
+    img {
+    }
+    p {
+      font-size: 12px;
+      line-height: 17px;
+      color: #9ba4b6;
+    }
+  }
+}
+
+.addressItem {
+  // height: 44px;
+  border-bottom: 1px solid #f7f7f7;
+  padding: 12px 0;
+  cursor: pointer;
+
+  .showAddress {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .name {
+    max-width: 210px;
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
+    margin-right: 4px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #232c41;
+    white-space: nowrap;
+    &.recent {
+      max-width: 100%;
+    }
+  }
+
+  .search {
+    color: #3c7cf3;
+  }
+
+  .address {
+    display: inline-block;
+    font-size: 12px;
+    line-height: 17px;
+    color: #9ba4b6;
+    p {
+      display: inline-block;
+    }
+  }
+
+  .recentTime,
+  .remarks {
+    font-size: 12px;
+    line-height: 17px;
+    color: #9ba4b6;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .remarks {
+    margin-top: 4px;
+  }
+}
+
+.addAddressBook {
+  .addAddressBookTitle {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    color: #232c41;
+    display: block;
+    margin: 0;
+    text-align: center;
+  }
+  .addAddressBookContent {
+    margin-top: 40px;
+  }
+
+  .addAddressBookAddress,
+  .addAddressBookName,
+  .addAddressBookRemarks {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    span:not(:global(.ant-input-suffix)):not(:global(.ant-input-suffix span)) {
+      min-width: 100px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 20px;
+      display: flex;
+      align-items: center;
+      color: #232c41;
+    }
+
+    :global {
+      .ant-input-affix-wrapper {
+        box-shadow: none;
+        height: 44px;
+        background: #f7f8fa;
+        border-radius: 10px;
+        border: 1px solid transparent;
+        &:hover {
+          border: 1px solid #232c41;
+        }
+      }
+    }
+  }
+  .addAddressBookAddress span {
+    margin-bottom: 0;
+  }
+  .addAddressBookName input {
+    border: none;
+    box-shadow: none;
+    height: 36px;
+    background: #f7f8fa;
+    border-radius: 10px;
+  }
+
+  .addAddressBookRemarks textarea {
+    border: none;
+    resize: none;
+    width: 100%;
+    box-shadow: none;
+    outline: none;
+    background: #f7f8fa;
+    height: 100%;
+    padding: 0;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .textWrap {
+    width: 100%;
+    border-radius: 10px;
+    background: #f7f8fa;
+    height: 90px;
+    padding: 12px 11px 10px;
+    border: 1px solid transparent;
+    &:hover {
+      border: 1px solid #232c41;
+    }
+  }
+
+  .inputCriteria {
+    color: #f31f1f;
+    font-size: 12px;
+    line-height: 17px;
+    margin: 0;
+    margin-top: 6px;
+  }
+}

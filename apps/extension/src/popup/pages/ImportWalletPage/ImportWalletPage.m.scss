@@ -1,0 +1,228 @@
+.content {
+  flex: 1;
+  padding: 0;
+  margin: 0 auto;
+  width: 328px;
+  height: 160px;
+  //border: 1px solid #dfdfdf;
+  //border-radius: 10px;
+}
+
+.walletTextarea {
+  width: 328px;
+  textarea {
+    &:hover {
+      &::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background: #c2c8d5;
+        position: relative;
+        left: -5px;
+      }
+      scrollbar-color: transparent #c2c8d5;
+      scrollbar-width: thin;
+    }
+
+    &::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 4px;
+      background: transparent;
+      position: relative;
+      left: -5px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    scrollbar-color: transparent #c2c8d5;
+    scrollbar-width: thin;
+  }
+
+  &.hasValue {
+    :global {
+      .ant-input-affix-wrapper-textarea-with-clear-btn {
+        border: 1px solid #232c41 !important;
+      }
+    }
+  }
+
+  :global {
+
+    .ant-input-affix-wrapper-textarea-with-clear-btn{
+      border-radius: 10px !important;
+      border: 1px solid #dfdfdf !important;
+      padding: 2px !important;
+      height: 100px;
+
+      &:hover {
+        border: 1px solid #232c41 !important;
+      }
+    }
+
+    .ant-input-affix-wrapper .ant-input:focus {
+      border: none;
+      box-shadow: none;
+    }
+
+    .anticon {
+      width: 14px;
+      height: 14px;
+      background: url(./images/delete-icon.svg) 0 0 no-repeat;
+      background-size: 100%;
+      top: 75px !important;
+      right: 8px !important;
+      > svg {
+        display: none;
+      }
+
+      &:hover {
+        background: url(./images/delete-icon-hover.svg) 0 0 no-repeat;
+      }
+    }
+  }
+}
+
+.contentInput {
+  //min-height: 100px;
+  padding: 14px 18px 14px 14px;
+  border: none;
+  margin-bottom: 10px;
+  resize: none;
+  background: #fff;
+  border-radius: 2px;
+  word-break: break-word;
+  color: #505160;
+  > span {
+    border: none !important;
+    cursor: default !important;
+  }
+
+}
+
+.commonBtn {
+  height: 40px;
+  line-height: 40px;
+  background: #232c41;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  margin:8px auto 0;
+  width: 328px;
+  z-index: 1;
+  &.disabled {
+    background: #cdd1da;
+    cursor: no-drop;
+  }
+}
+.errorMsg {
+  font-size: 12px;
+  line-height: 17px;
+  color: #db705c;
+  margin-top: 6px;
+}
+
+.walletInfo {
+  //max-height: 323px;
+
+  .walletName, .passwordLabel {
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 16px;
+    color: #232C41;
+  }
+
+  .walletNameInputWrapper {
+    margin-bottom: 16px;
+
+    .nameError {
+      font-size: 12px;
+      line-height: 17px;
+      color: #E84343;
+      margin-top: 4px;
+    }
+  }
+
+
+  > p {
+    font-size: 14px;
+    line-height: 20px;
+    color: #232C41;
+    margin-bottom: 10px;
+
+    &.password-tips {
+      margin-top: 8px;
+      font-size: 12px;
+      line-height: 17px;
+      color: #515060;
+      align-items: center;
+      justify-content: flex-start;
+      > img {
+        width: 12px;
+        height: 12px;
+        margin-right: 4px;
+      }
+    }
+  }
+
+  :global {
+    .ant-input-affix-wrapper {
+      margin-top: 10px;
+      //margin-bottom: 16px;
+      background: #fff;
+      border: 1px solid #dfdfdf;
+      border-radius: 10px;
+      height: 44px;
+      box-shadow: none;
+
+      &:hover {
+        border-color: #232c41;
+      }
+    }
+    .ant-input {
+      background: none;
+    }
+  }
+
+}
+
+.flat{
+  margin-top:10px;
+}
+.flat > span {
+  display: inline-block;
+  line-height: 28px;
+  padding: 0 10px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  background: #fff;
+  border-radius: 2px;
+  font-size: 14px;
+  color: #505160;
+  border: 1px solid #888998;
+  cursor: pointer;
+}
+
+.walletTips{
+  margin: 12px 0 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  line-height: 17px;
+  color: #6D778C;
+  mix-blend-mode: normal;
+  opacity: .7;
+  width: 100%;
+  cursor: pointer;
+  input{
+    opacity: 0;
+    z-index: 1;
+    position: absolute;
+    cursor: pointer;
+  }
+}

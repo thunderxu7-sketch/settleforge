@@ -1,0 +1,74 @@
+.ledgerModal {
+  :global(.ant-modal-header),
+  :global(.ant-modal-footer) {
+    border: none;
+  }
+  :global(.ant-modal-header) {
+    display: none;
+  }
+
+  :global(.ant-modal-content) {
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  :global(.ant-modal) {
+    top: 200px;
+    margin: 0 30px;
+    padding: 0;
+    width: auto !important;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  :global(.ant-modal-footer) {
+    padding: 0 16px 24px 16px;
+    width: 100%;
+    button {
+      border: 1px solid #c0c7d6;
+      box-sizing: border-box;
+      border-radius: 10px;
+      width: 100%;
+      height: 38px;
+      &:last-child {
+        display: none;
+      }
+
+      span {
+        font-size: 14px;
+        line-height: 20px;
+        color: #9ba4b6;
+      }
+    }
+  }
+
+  .overview {
+    text-align: center;
+  }
+
+  .ledgerTips {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 26px;
+    color: #232c41;
+  }
+
+  .detail {
+    width: 43px;
+    margin: 24px auto 0;
+    height: 43px;
+    animation: spin 1s linear infinite;
+    background-image: url('./images/icon-ledger-loading.svg');
+    background-size: cover;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,9 @@
+[production:chrome]
+chrome >= 71
+
+[production:firefox]
+firefox >= 65
+
+[development]
+last 1 chrome versions
+last 1 firefox versions

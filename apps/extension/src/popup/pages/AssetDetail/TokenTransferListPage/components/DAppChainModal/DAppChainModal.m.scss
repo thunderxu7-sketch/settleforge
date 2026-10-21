@@ -1,0 +1,90 @@
+.dAppChainModal {
+  position: relative;
+  .overview {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    color: #232c41;
+  }
+  .detail {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.1px;
+    color: #6d778c;
+    padding: 0 4px;
+  }
+
+  .logo {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    img {
+      width: 50px;
+      margin: 0 auto;
+    }
+
+    a {
+      margin-top: 10px;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 18px;
+      color: #3c7cf3;
+
+      border-bottom: 1px solid #3c7cf3;
+    }
+  }
+
+  :global(.ant-modal-body),
+  :global(.ant-modal-footer) {
+    border: none;
+    padding: 0;
+  }
+
+  :global(.ant-modal-wrap) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  :global(.ant-modal) {
+    width: 300px !important;
+    margin: 0 30px;
+    padding: 0;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+
+    position: static;
+  }
+
+  :global(.ant-modal-content) {
+    padding: 24px 16px;
+    width: 100%;
+
+    button {
+      border: 1px solid #c0c7d6;
+      box-sizing: border-box;
+      border-radius: 10px;
+      width: 268px;
+      height: 38px;
+      font-size: 14px;
+      line-height: 20px;
+      margin-top: 24px;
+      background: #232c41;
+      color: #ffffff;
+    }
+  }
+
+  :global(.ant-modal-body) {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+  }
+}

@@ -1,0 +1,401 @@
+.container {
+  z-index: 100;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(35, 44, 65, 0.7);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.websitesContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 389px;
+
+  background: #ffffff;
+  border-radius: 12px;
+}
+
+.closeIcon {
+  position: absolute;
+  top: 19px;
+  right: 19px;
+  cursor: pointer;
+}
+
+.title {
+  margin-top: 24px;
+  align-self: center;
+
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #232c41;
+}
+
+.connectedCount {
+  margin: 8px 20px 0;
+
+  font-size: 14px;
+  line-height: 20px;
+  color: #6d778c;
+
+  text-align: center;
+}
+
+.connectedCountColor {
+  color: #232c41;
+}
+
+.websiteList {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 20px;
+}
+
+.websiteRow {
+  display: flex;
+  align-items: center;
+  margin: 0 16px;
+  height: 68px;
+  border-bottom: 1px solid #ebedf0;
+  flex-shrink: 0;
+}
+
+.websiteIcon {
+  width: 30px;
+  height: 30px;
+}
+
+.rightPart {
+  margin-left: 8px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: flex-start;
+}
+
+.websiteName {
+  max-width: 200px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #232c41;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.hostname {
+  max-width: 200px;
+  font-size: 12px;
+  line-height: 17px;
+  color: #9ba4b6;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.deleteIcon {
+  width: 18px;
+  height: 18px;
+  background: url(../../../../../static/images/trash_bin.svg) no-repeat;
+}
+
+.deleteIcon:hover {
+  background: url(../../../../../static/images/trash_bin_black.svg) no-repeat;
+  cursor: pointer;
+}
+
+.deleteContainer {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+
+  background: #ffffff;
+  border-radius: 12px;
+}
+
+.deleteTitle {
+  padding: 0 12px;
+  text-align: center;
+  margin-top: 24px;
+  align-self: center;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 26px;
+
+  color: #232c41;
+}
+
+.justHref {
+  //display: inline-block;
+  max-width: 160px;
+  font-size: 16px;
+  color: #3C7CF3;
+  height: 26px;
+  line-height: 26px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.dialogButtons {
+  margin: 24px 16px;
+  display: flex;
+  justify-content: space-between;
+
+  .cancelButton {
+    width: 127px;
+    height: 38px;
+    border: 1px solid #c0c7d6;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    font-size: 14px;
+    color: #232c41;
+    cursor: pointer;
+    background-color: #FFFFFF;
+
+    &:hover {
+      border: 1px solid #232c41;
+    }
+  }
+
+  .confirmButton {
+    width: 127px;
+    height: 38px;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    font-size: 14px;
+    color: #ffffff;
+    background: #232c41;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.noAddressContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+
+  background: #ffffff;
+  border-radius: 12px;
+}
+
+.noAddressWebsiteIcon {
+  width: 30px;
+  height: 30px;
+  margin-top: 24px;
+  align-self: center;
+}
+
+.noAddressTitle {
+  margin: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  align-self: center;
+
+  color: #232c41;
+  max-width: calc(100% - 48px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.noAddressLabel {
+  margin: 20px 23px 0;
+
+  font-size: 14px;
+  line-height: 20px;
+
+  color: #6d778c;
+}
+
+.noAddressButton {
+  align-self: center;
+  margin: 24px 0;
+  width: 268px;
+  height: 38px;
+
+  background: #232c41;
+  border-radius: 10px;
+  border: none;
+
+  font-size: 14px;
+
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.addressListContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  //max-height: 481px;
+
+  background: #ffffff;
+  border-radius: 12px;
+}
+
+.connectedCountLabel {
+  margin-top: 4px;
+  align-self: center;
+  max-width: 180px;
+
+  font-size: 14px;
+  line-height: 20px;
+
+  color: #6d778c;
+}
+
+.addressRowsContainer {
+  padding: 8px 0 16px;
+  flex: 1;
+  border-bottom: 1px solid #ebedf0;
+  max-height: 310px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.permissionLabel {
+  margin: 12px 0 14px 16px;
+
+  font-size: 12px;
+  line-height: 17px;
+  display: flex;
+
+  color: #232c41;
+}
+
+.addressRow {
+  display: flex;
+  flex-direction: row;
+  margin: 12px 16px 0;
+  height: 60px;
+
+  background: #f7f8fa;
+  border-radius: 10px;
+}
+
+.addressRow:hover {
+  background-color: #e9efff;
+}
+
+.addressRowLeftPart {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.addressRowRightPart {
+  margin-right: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.accountNameContainer {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.nameCircle {
+  margin: 0 -8px 0 8px;
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+  background: #46daae;
+}
+
+.accountName {
+  margin-left: 12px;
+  max-width: 120px;
+  height: 20px;
+
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+
+  color: #232c41;
+}
+
+.currentAccount {
+  margin-left: 10px;
+  font-size: 12px;
+  line-height: 17px;
+
+  color: #232c41;
+}
+
+.address {
+  margin: 4px 0 0 12px;
+  height: 17px;
+
+  font-size: 12px;
+  line-height: 17px;
+
+  color: #9ba4b6;
+
+  &.isCurrent {
+    margin-left: 18px;
+  }
+}
+
+.switchButton {
+  height: 17px;
+  font-size: 12px;
+  line-height: 17px;
+  color: #3c76fe;
+  cursor: pointer;
+}
+
+.disconnectButton {
+  margin-left: 12px;
+  height: 17px;
+
+  font-size: 12px;
+  line-height: 17px;
+
+  color: #232c41;
+  cursor: pointer;
+}
+
+.connectButton {
+  padding: 0 12px;
+  height: 24px;
+
+  background: #232c41;
+  border-radius: 6px;
+
+  font-size: 12px;
+  line-height: 24px;
+
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}

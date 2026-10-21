@@ -1,0 +1,63 @@
+.approveAddressModal {
+  .overview {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  .detail {
+    font-size: 14px;
+    line-height: 20px;
+    color: #6d778c;
+  }
+
+  :global(.ant-modal-header),
+  :global(.ant-modal-footer) {
+    border: none;
+  }
+  :global(.ant-modal-header) {
+    display: none;
+  }
+
+  :global(.ant-modal-content) {
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  :global(.ant-modal) {
+    top: 200px;
+    margin: 0 30px;
+    padding: 0;
+    width: auto !important;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  :global(.ant-modal-footer) {
+    padding: 0 16px 24px 16px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    button {
+      border: 1px solid #c0c7d6;
+      box-sizing: border-box;
+      border-radius: 10px;
+      width: 127px;
+      height: 38px;
+      font-size: 14px;
+      line-height: 20px;
+      color: #232c41;
+      box-shadow: none;
+      &:hover {
+        border: 1px solid #232c41;
+      }
+      &:last-child {
+        border: none;
+        background: #232c41;
+        border-radius: 10px;
+        color: #ffffff;
+      }
+    }
+  }
+}

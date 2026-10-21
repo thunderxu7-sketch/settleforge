@@ -14,6 +14,11 @@
 | 广播未知与恢复 | 保留原交易和冻结；重建模拟器后确认；重复结算仅一个 journal | `TestUnknownBroadcastRestartAndExactlyOnceSettlement` |
 | 归集与负债 | 归集不改变用户负债，静止状态对账差额为零 | `TestSweepDoesNotChangeUserLiabilityAndReconciles` |
 | 账本约束 | 非平衡 journal 和账本修改被 PostgreSQL 拒绝 | `TestLedgerRejectsUnbalancedAndMutableRecords` |
+| RFQ 签名询价 | 两家本地来源、净价排序、单来源超时及报价字段篡改拒绝 | `TestRFQSignedQuotesFeesAndSourceTimeout` |
+| RFQ 并发预留 | 10 ETH 余额收到 40 个各卖出 1 ETH 的请求，仅接受 10 个；用户及做市商库存不足均拒绝 | `TestRFQConcurrentAcceptCannotOverspend` / `TestRFQPreflightLimitsAndReview` |
+| RFQ 审批与结算 | 幂等确认、同报价拒绝二次消费、双人审批、重建服务及并发 worker 结算一次 | `TestRFQSettlementApprovalsAndReplay` |
+| RFQ 退款与回滚 | 取消、过期释放双方预留；买入侧故障导致两种资产全部回滚，恢复后重试；反向兑换 | `TestRFQExpiryCancellationAndRecovery` / `TestRFQSettlementRollsBackBothAssets` |
+| RFQ HTTP 与 CLI | 询价、确认冻结、两次 CLI 签名、worker 结算及取消退款 | `make local-rfq-demo` |
 | 真实 BTC 充提与归集 | 新地址、充值扫描去重、PSBT 签名、Core mempool 接纳、2 次确认、结算与对账 | `TestBitcoinCoreRegtestDepositWithdrawSweepReorg` |
 | BTC 重组与重新出现 | invalidateblock 后冲正并隔离；重新挖块后以新 generation 入账 | 同上 |
 | MPC 实际协议 | 新鲜 2/3 DKG、两方签名校验成功、单方配置被拒绝 | `go run ./cmd/mpclab --generate` |
@@ -47,6 +52,7 @@ HTTP sweep      7083167dcbc7bb3e995d06ca5f2e4365ff58b6eb3bbab8b4f549a3cb6ede7ab5
 - Nitro 真机证明、enclave 内签名与 KMS RecipientAttestation。
 - 物理 HSM、MPC 跨机隔离与生产备份恢复。
 - TRON / EVM 托管真实 RPC、代币充值解析与生产多链部署。
+- RFQ 外部做市商、真实行情、外部成交回报与对账、0x / DEX 授权和主网兑换；当前仅本地合成报价及原子账本结算。
 - BTC 自动 RBF / CPFP、动态费率、已终态提现及平台注资的完整重组补偿。
 - 有在途交易时的全局一致对账、生产压测、SLA、独立安全审计。
 - 插件与托管后台的产品集成、完整浏览器交互回归及旧依赖升级。

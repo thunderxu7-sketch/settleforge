@@ -28,7 +28,7 @@
 make local-up
 ```
 
-此命令启动 PostgreSQL / Core、构建二进制、保留已有本地密钥配置，并在前台运行 API。BTC 使用真实 Core regtest，TRON / EVM 使用显式模拟器。另一个终端运行两条 HTTP 充提演示：
+此命令启动 PostgreSQL / Core、构建二进制、保留已有本地密钥配置，并在前台运行 API。BTC 使用真实 Core regtest，TRON / EVM 使用显式模拟器。另一个终端运行充提与询价 HTTP 演示：
 
 ```sh
 make local-demo

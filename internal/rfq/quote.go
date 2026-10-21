@@ -6,6 +6,7 @@ import (
 	"context"
 	"crypto/ed25519"
 	"encoding/base64"
+	"errors"
 	"fmt"
 	"math/big"
 	"sort"
@@ -121,7 +122,11 @@ func Collect(ctx context.Context, in domain.RFQRequest, sources []Source, timeou
 			delete(seen, a.source.ID())
 			now := time.Now().Unix()
 			if a.err != nil {
-				out.Rejected[a.source.ID()] = "unavailable"
+				if errors.Is(a.err, context.DeadlineExceeded) || errors.Is(a.err, context.Canceled) {
+					out.Rejected[a.source.ID()] = "timeout"
+				} else {
+					out.Rejected[a.source.ID()] = "unavailable"
+				}
 			} else if a.quote.MakerID != a.source.ID() || a.quote.RFQRequest != in || a.quote.ExpiresAt <= now || a.quote.ExpiresAt > now+120 || VerifyQuote(a.quote, a.source.PublicKey()) != nil {
 				out.Rejected[a.source.ID()] = "invalid_quote"
 			} else {

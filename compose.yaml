@@ -3,7 +3,7 @@ services:
   bitcoin:
     image: bitcoin/bitcoin:30.2
     command: ["-regtest=1", "-server=1", "-txindex=1", "-fallbackfee=0.00002000", "-rpcbind=0.0.0.0", "-rpcallowip=0.0.0.0/0", "-rpcuser=settleforge", "-rpcpassword=local-regtest-only", "-printtoconsole=1"]
-    ports: ["127.0.0.1:18443:18443"]
+    ports: ["127.0.0.1:${BITCOIN_RPC_PORT:-18443}:18443"]
     volumes: ["bitcoin-data:/home/bitcoin/.bitcoin"]
     healthcheck:
       test: ["CMD", "bitcoin-cli", "-regtest", "-rpcuser=settleforge", "-rpcpassword=local-regtest-only", "getblockchaininfo"]
@@ -12,7 +12,7 @@ services:
       retries: 30
   postgres:
     image: postgres:18-alpine
-    ports: ["127.0.0.1:55432:5432"]
+    ports: ["127.0.0.1:${PG_PORT:-55432}:5432"]
     environment:
       POSTGRES_USER: settleforge
       POSTGRES_PASSWORD: local-development-only

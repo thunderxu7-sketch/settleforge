@@ -2,6 +2,8 @@
 
 验证日期：2026-10-21。环境：macOS arm64、Go 1.27.3、Colima / Docker、PostgreSQL 18、Bitcoin Core 30.2、SoftHSM 2.7.0。
 
+当前采用本地运行方案。完整入口为 `make local-check`，通过独立临时容器验证并生成 `.local/verification-latest.json`；HTTP 演示入口为 `make local-up` 与 `make local-demo`。云资源费用为零，TEE 范围限定为本地证明校验。
+
 ## 已运行
 
 | 验收 | 结果 | 复现入口 |
@@ -22,6 +24,8 @@
 | Nitro 校验器 | 测试 CA 正例；AWS 根拒绝测试 CA；篡改、错误 PCR、公钥、nonce、策略、过期、重放均拒绝 | `TestNitroCOSETrustFreshnessPCRBindingReplay` |
 | 插件构建 | webpack 成功，历史依赖和 bundle 大小警告保留 | `pnpm run build:prd:chrome` |
 | HTTP 全流程 | 模拟 TRON 充值去重、幂等提现、双人审批、广播未知恢复、归集、用户余额及零差额对账 | `python3 scripts/demo.py` |
+| BTC HTTP 全流程 | 本地真实 Core 充值扫描、幂等提现、mempool 接纳、两次确认、归集和两个地址零差额对账 | `python3 scripts/demo-bitcoin.py` |
+| 一键本地验收 | 8 个阶段全部完成：容器、软件令牌、vet、全套测试、新鲜 DKG、MPC BTC、PKCS#11 BTC、清理；必需测试未跳过 | `make local-check` |
 
 Core 验收中的部分真实 regtest 交易 ID（只属于本地链，不可在主网浏览器查询）：
 
@@ -30,6 +34,8 @@ MPC withdrawal 793988399d152d0ad7587c196146325d321b603b1589cec22ae7e9cb671f1c4c
 MPC sweep      00642c0a193bfefeec81e8a156a6dce73a4cfee6dd619fccc9df59e062e7a73e
 HSM withdrawal 41867b5330bab7b0028af0c727664c7409ebdf1b0be01549e1c6c45bd26c66b9
 HSM sweep      882e4d3c668755210610a7e63940bb87ecfbb83bfc82ea5f06aaa5caa34715a6
+HTTP withdrawal dcd67481ede4157caa59ac6dd782555347c46e282df1f2e3323c8457323f1be2
+HTTP sweep      7083167dcbc7bb3e995d06ca5f2e4365ff58b6eb3bbab8b4f549a3cb6ede7ab5
 ```
 
 测试会生成新地址与交易 ID，复跑结果不会相同。测试 schema、密钥和分片不提交 Git。全套 `-race` 验收通过；CI 工作流在每次 push 后重新运行，不以本地结果替代远端结果。

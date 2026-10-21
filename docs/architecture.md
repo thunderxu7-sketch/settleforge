@@ -1,5 +1,7 @@
 # 架构与资金安全边界
 
+当前以 [本地实验方案](local-lab.md) 交付，完整验证入口为 `make local-check`。云端 enclave 与物理安全设备属于扩展范围。
+
 ## 流程与信任边界
 
 ```mermaid

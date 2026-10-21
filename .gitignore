@@ -11,3 +11,5 @@ coverage/
 .DS_Store
 apps/extension/chrome-extension.zip
 bin/
+__pycache__/
+*.pyc

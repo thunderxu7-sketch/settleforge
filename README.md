@@ -17,33 +17,33 @@
 | TRON / EVM 托管适配 | 统一接口、地址、金额模型与显式模拟链 | 未接入真实托管 RPC |
 | 浏览器插件 | 从用户自有 tronlink-lite 派生，独立名称与标识，保留 TRON DApp 兼容协议 | 构建验证；未集成托管管理后台 |
 
-这是可复现实验项目。生产升级边界与验证记录见 [架构](docs/architecture.md)、[验收](docs/validation.md)。下一步真机工作的 [Nitro 资源与成本清单](docs/nitro-deployment.md) 已备好，尚未创建 AWS 资源。
+当前采用**本地运行方案，云资源费用为零**。资金系统、BTC regtest、MPC 和软件 HSM 在本机验证；TEE 的交付范围是本地证明校验组件。使用方式见 [本地运行与演示](docs/local-lab.md)，技术边界见 [架构](docs/architecture.md)、[验收](docs/validation.md)。
 
 ## 启动
 
-需要 Go 1.25+、C 编译器（PKCS#11 包）和 Docker Compose。Go 依赖可能要求更新的补丁版本，CI 使用 Go 1.27。
+需要 Go 1.25+、C 编译器（PKCS#11 包）、Python 3 和 Docker Compose。完整签名验收还需要 SoftHSM 与 ripgrep。Go 依赖可能要求更新的补丁版本，CI 使用 Go 1.27。
 
 ```sh
-docker compose up -d --wait
-go build -o bin/settleforge ./cmd/settleforge
-./bin/settleforge init
-# init 生成 .local/dev.env、API token 和两个操作员密钥，均不进入 Git。
-# 默认三个网络均为显式模拟链；以下配置启用真实 BTC regtest。
-export BITCOIN_RPC_URL=http://127.0.0.1:18443
-export BITCOIN_RPC_USER=settleforge
-export BITCOIN_RPC_PASSWORD=local-regtest-only
-./bin/settleforge serve
+make local-up
 ```
 
-另一个终端运行 HTTP 充提演示：
+此命令启动 PostgreSQL / Core、构建二进制、保留已有本地密钥配置，并在前台运行 API。BTC 使用真实 Core regtest，TRON / EVM 使用显式模拟器。另一个终端运行两条 HTTP 充提演示：
 
 ```sh
-python3 scripts/demo.py
+make local-demo
 ```
 
 API 仅监听 `127.0.0.1:8080`，开发配置位于 `.local/dev.env`。不要把这些本地数据库、RPC 示例凭据用于公网。
 
 ## 验收
+
+```sh
+make local-check
+```
+
+完整验收创建独立临时 PostgreSQL / Core 容器、全新 MPC 分片和 SoftHSM 令牌，依次验证账本与故障恢复、真实 BTC、两种签名 Provider、独立 signer 和本地 Nitro 校验。检查必需测试确实通过，拒绝静默跳过。结束后删除本轮临时容器及卷，保留 `.local/verification-latest.json` 与分项日志；不触碰日常演示的数据卷。
+
+单独运行某一项：
 
 ```sh
 make test-integration

@@ -20,10 +20,12 @@ def api(method, path, body=None, key=None):
         return json.load(response)
 
 def wait_state(wid, states):
-    for _ in range(100):
+    for _ in range(300):
         result = api("GET", "/v1/withdrawals/" + wid)
         if result["state"] in states:
             return result
+        if result["state"] in {"failed", "review"}:
+            raise RuntimeError("transaction stopped in state " + result["state"])
         time.sleep(0.1)
     raise RuntimeError("transaction did not reach " + str(states))
 

@@ -34,6 +34,8 @@ HSM sweep      882e4d3c668755210610a7e63940bb87ecfbb83bfc82ea5f06aaa5caa34715a6
 
 测试会生成新地址与交易 ID，复跑结果不会相同。测试 schema、密钥和分片不提交 Git。全套 `-race` 验收通过；CI 工作流在每次 push 后重新运行，不以本地结果替代远端结果。
 
+发布前运行 Gitleaks 源码与 staged 扫描，未发现泄露；govulncheck 未发现可达的已知漏洞，另提示依赖模块层面存在 3 项未被当前代码导入 / 调用的漏洞。此结果不是独立安全审计，也不覆盖历史插件依赖的完整升级工作。
+
 ## 尚未验证或实现
 
 - Nitro 真机证明、enclave 内签名与 KMS RecipientAttestation。

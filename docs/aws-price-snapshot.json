@@ -1,0 +1,66 @@
+{
+  "verified_date": "2026-10-21",
+  "region": "ap-southeast-1",
+  "currency": "USD",
+  "ec2": {
+    "source": "https://b0.p.awsstatic.com/pricing/2.0/meteredUnitMaps/ec2/USD/current/ec2-ondemand-without-sec-sel/Asia%20Pacific%20(Singapore)/Linux/index.json",
+    "manifest": {
+      "serviceId": "ec2",
+      "accessType": "publish",
+      "hawkFilePublicationDate": "2026-10-15T19:13:16Z",
+      "ETLIngestionTriggerDate": "2026-10-15T19:13:16Z",
+      "currencyCode": "USD",
+      "source": "ec2-ondemand-without-sec-sel"
+    },
+    "selected": {
+      "rateCode": "PVWWY5T89TFUAAHE.JRTCKXETXF.6YS6EN2CT7",
+      "price": "0.1960000000",
+      "Location": "Asia Pacific (Singapore)",
+      "Instance Family": "Compute optimized",
+      "vCPU": "4",
+      "Instance Type": "c6i.xlarge",
+      "Memory": "8 GiB",
+      "Storage": "EBS only",
+      "Network Performance": "Up to 12500 Megabit",
+      "plc:OperatingSystem": "Linux",
+      "plc:InstanceFamily": "Compute Optimized",
+      "Operating System": "Linux",
+      "Pre Installed S/W": "NA",
+      "License Model": "No License required"
+    }
+  },
+  "ebs": {
+    "source": "https://b0.p.awsstatic.com/pricing/2.0/meteredUnitMaps/ec2/USD/current/ebs.json",
+    "manifest": {
+      "serviceId": "ec2",
+      "accessType": "publish",
+      "esIndex": "plc-ec2-usd-20261015191316",
+      "hawkFilePublicationDate": "2026-10-15T19:13:16Z",
+      "ETLIngestionTriggerDate": "2026-10-15T19:13:16Z",
+      "currencyCode": "USD",
+      "source": "ebs",
+      "isMapped": "true"
+    },
+    "selected": {
+      "rateCode": "X8SY8CJFS8WV7VQN.JRTCKXETXF.6YS6EN2CT7",
+      "price": "0.0960000000",
+      "RegionlessRateCode": "rfOvvXHDAJRZK8rCe8ThxmpU_7SjA3m6T5_yeV0z0FQ"
+    }
+  },
+  "other_rates": {
+    "public_ipv4_hour": "0.005",
+    "kms_key_month": "1.00",
+    "kms_symmetric_per_10000_operations": "0.03"
+  },
+  "assumptions": {
+    "hours_in_estimated_month": 730,
+    "ebs_gb": 20,
+    "kms_requests_total": 1000,
+    "excludes": [
+      "tax",
+      "data transfer",
+      "optional log services"
+    ],
+    "free_tier_applied": false
+  }
+}

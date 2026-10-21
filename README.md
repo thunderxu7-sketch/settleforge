@@ -17,7 +17,7 @@
 | TRON / EVM 托管适配 | 统一接口、地址、金额模型与显式模拟链 | 未接入真实托管 RPC |
 | 浏览器插件 | 从用户自有 tronlink-lite 派生，独立名称与标识，保留 TRON DApp 兼容协议 | 构建验证；未集成托管管理后台 |
 
-这是可复现实验项目。生产升级边界与验证记录见 [架构](docs/architecture.md)、[验收](docs/validation.md)。
+这是可复现实验项目。生产升级边界与验证记录见 [架构](docs/architecture.md)、[验收](docs/validation.md)。下一步真机工作的 [Nitro 资源与成本清单](docs/nitro-deployment.md) 已备好，尚未创建 AWS 资源。
 
 ## 启动
 
